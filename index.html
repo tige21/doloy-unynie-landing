@@ -12,17 +12,433 @@
   </head>
   <body>
     <main id="film">
-      <section class="scene" id="scene-0" data-scene="0" aria-label="Серое утро"></section>
-      <section class="scene" id="scene-1" data-scene="1" aria-label="Исповедь"></section>
-      <section class="scene" id="scene-2" data-scene="2" aria-label="Дверь открыта"></section>
-      <section class="scene" id="scene-3" data-scene="3" aria-label="Ты в команде"></section>
-      <section class="scene" id="scene-4" data-scene="4" aria-label="Разгон"></section>
-      <section class="scene" id="scene-4b" data-scene="4b" aria-label="Вдох"></section>
-      <section class="scene" id="scene-5" data-scene="5" aria-label="Крик"></section>
-      <section class="scene" id="scene-6" data-scene="6" aria-label="Выдох"></section>
-      <section class="scene" id="scene-7" data-scene="7" aria-label="Автор"></section>
-      <section class="scene" id="scene-8" data-scene="8" aria-label="Твоё воскресенье"></section>
-      <section class="scene" id="scene-9" data-scene="9" aria-label="Титр"></section>
+      <!-- Сцена 0 «Серое утро»: тишина, ни одного изображения (DL 17) -->
+      <section class="scene scene-0" id="scene-0" data-scene="0" aria-label="Серое утро">
+        <p class="t-whisper s0-whisper">долой уныние</p>
+        <h1 class="t-title s0-line">
+          Воскресенье, 12:40.<br />
+          Можно остаться дома.<br />
+          Как обычно.
+        </h1>
+      </section>
+
+      <!-- Сцена 1 «Исповедь»: текст — единственный актёр; поэтическая разбивка -->
+      <section class="scene scene-1" id="scene-1" data-scene="1" aria-label="Исповедь">
+        <div class="s1-step">
+          <p class="t-line s1-thought">
+            Половина моих знакомых до&nbsp;30&nbsp;лет&nbsp;—<br />
+            на&nbsp;психотерапии и&nbsp;антидепрессантах.
+          </p>
+        </div>
+        <div class="s1-step">
+          <p class="t-line s1-thought">Я&nbsp;и&nbsp;сам склонен к&nbsp;унынию.</p>
+        </div>
+        <div class="s1-step">
+          <p class="t-line s1-thought">
+            Единственное, что помогает&nbsp;—<br />
+            раз в&nbsp;две недели собирать активных людей вместе,<br />
+            чтобы остатками позитива<br />
+            <span class="s1-drop">вдарить по&nbsp;безнадёге!</span>
+          </p>
+        </div>
+      </section>
+      <!-- Сцена 2 «Дверь открыта»: событие «первое лицо» → толпа (приём «фрагмент→целое») -->
+      <section class="scene scene-2" id="scene-2" data-scene="2" aria-label="Дверь открыта">
+        <div class="spread">
+          <p class="t-timecode s2-timecode">13:00</p>
+          <figure class="s2-first">
+            <img
+              src="/media/crowd-vert@800.jpg"
+              alt="Несколько человек стоят близко: спокойные лица, кто-то держит табличку «Команда №1». Первые, кого встречаешь у двери."
+              width="800"
+              height="1000"
+              loading="lazy"
+            />
+            <figcaption class="t-caption">Дверь открыта. Заходи.</figcaption>
+          </figure>
+        </div>
+        <figure class="s2-crowd">
+          <img
+            src="/media/crowd@1600.jpg"
+            srcset="/media/crowd@800.jpg 800w, /media/crowd@1600.jpg 1600w"
+            sizes="100vw"
+            alt="Человек тридцать в светлом зале, все улыбаются и смотрят в камеру. Толпа не помещается в кадр."
+            width="1600"
+            height="900"
+            loading="lazy"
+          />
+          <figcaption class="t-caption s2-crowd-caption">
+            Вход с&nbsp;13:00. Первые двадцать минут просто общаемся и&nbsp;ждём всех.
+            Опаздывать можно, стесняться&nbsp;— тоже.
+          </figcaption>
+        </figure>
+        <div class="spread">
+          <figure class="s2-small">
+            <img
+              src="/media/small-group@800.jpg"
+              srcset="/media/small-group@800.jpg 800w, /media/small-group@1600.jpg 1600w"
+              sizes="(max-width: 700px) 92vw, 44rem"
+              alt="Тринадцать человек у стены с баннерами, почти все показывают большие пальцы вверх."
+              width="800"
+              height="600"
+              loading="lazy"
+            />
+            <figcaption class="t-caption">
+              Бывает и&nbsp;камерный состав. Да, мы попросили всех показать пальцы.
+              Все показали.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Сцена 3 «Ты в команде»: процесс + переворот «все — спикеры» + один выпад -->
+      <section class="scene scene-3" id="scene-3" data-scene="3" aria-label="Ты в команде">
+        <figure class="s3-process">
+          <img
+            src="/media/process@1600.jpg"
+            srcset="/media/process@800.jpg 800w, /media/process@1600.jpg 1600w"
+            sizes="100vw"
+            alt="Зал, разбитый на круги из стульев: команды сидят лицом друг к другу, обсуждают, у кого-то ноутбук."
+            width="1600"
+            height="900"
+            loading="lazy"
+          />
+          <figcaption class="t-caption s3-process-caption">
+            Команды готовят выступление. Темы и&nbsp;механики меняются каждый раз&nbsp;—
+            неизменны три вещи.
+          </figcaption>
+        </figure>
+        <div class="spread s3-rules-wrap">
+          <div class="plate-cream s3-rules">
+            <p class="s3-rule s3-rule-main">Участники создают, а&nbsp;не&nbsp;потребляют.</p>
+            <p class="s3-rule">Всё&nbsp;— командой.</p>
+            <p class="s3-rule">Задания&nbsp;— творческие.</p>
+          </div>
+        </div>
+        <div class="spread s3-turn">
+          <p class="t-line">Все участники&nbsp;— спикеры.</p>
+          <p class="t-voice s3-turn-voice">
+            Выступаете всей командой, тезисы готовите на&nbsp;месте.
+            Готовиться заранее не&nbsp;нужно, главное прийти.
+          </p>
+        </div>
+        <div class="s3-jab">
+          <p class="t-line s3-jab-line">
+            Типичный нетворкинг: рандомные челиксы под видом общения пытаются
+            что-то друг другу продать.
+          </p>
+          <p class="t-line s3-jab-punch">Не&nbsp;надо так.</p>
+        </div>
+      </section>
+      <!-- Сцена 4 «Разгон»: перебивки + выкрики, плотно, без новой информации -->
+      <section class="scene scene-4" id="scene-4" data-scene="4" aria-label="Разгон">
+        <p class="t-timecode s4-timecode">15:50</p>
+        <div class="s4-flow">
+          <figure class="s4-frag s4-frag-a">
+            <img
+              src="/media/frag-circle@800.jpg"
+              alt="Круг стульев, спины, чья-то сумка на стуле — команды в работе."
+              width="800"
+              height="571"
+              loading="lazy"
+            />
+          </figure>
+          <p class="t-shout s4-shout-a">Команды выступили</p>
+          <figure class="s4-frag s4-frag-b">
+            <img
+              src="/media/frag-laptop@800.jpg"
+              alt="Руки над ноутбуком, рядом кто-то объясняет с ручкой в руках."
+              width="800"
+              height="571"
+              loading="lazy"
+            />
+          </figure>
+          <p class="t-shout s4-shout-b">Энергия под потолком</p>
+          <figure class="s4-frag s4-frag-c">
+            <img
+              src="/media/frag-smile@800.jpg"
+              alt="Крупно: улыбающиеся лица в толпе, все смотрят в камеру."
+              width="800"
+              height="661"
+              loading="lazy"
+            />
+          </figure>
+          <p class="t-shout s4-shout-c">Осталось одно</p>
+        </div>
+      </section>
+
+      <!-- Сцена 4½ «Вдох»: самый пустой кадр фильма + единственное приглашение звука -->
+      <section class="scene scene-4b" id="scene-4b" data-scene="4b" aria-label="Вдох">
+        <div class="s4b-center">
+          <button type="button" class="s4b-sound" id="sound-consent" aria-pressed="false">
+            <svg
+              class="s4b-sound-mark"
+              viewBox="0 0 32 32"
+              width="26"
+              height="26"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <!-- TODO: заменить на скан рукописного знака звука (DL 12.2) -->
+              <path d="M5 12 L5 20 L11 20 L18 27 L18 5 L11 12 Z" />
+              <path class="s4b-sound-waves" d="M23 11 C26 14 26 18 23 21" />
+            </svg>
+            Тут лучше со&nbsp;звуком, честно
+          </button>
+        </div>
+      </section>
+      <!-- Сцена 5 «КРИК» — событие фильма. Единственный текст поверх медиа
+           (спроектированное исключение DL 7.7). Удары — задача climax.ts. -->
+      <section class="scene scene-5" id="scene-5" data-scene="5" aria-label="Крик">
+        <div class="s5-stage">
+          <p class="t-scream s5-word s5-word-doloy" data-strike="1" aria-hidden="true">долой</p>
+          <video
+            class="s5-video"
+            id="climax-video"
+            playsinline
+            muted
+            preload="metadata"
+            poster="/media/climax-poster.jpg"
+          >
+            <source src="/media/climax.webm" type="video/webm" />
+            <source src="/media/climax.mp4" type="video/mp4" />
+          </video>
+          <p class="t-scream s5-word s5-word-unynie" data-strike="2" aria-hidden="true">уныние!</p>
+        </div>
+        <p class="visually-hidden">
+          Видео: тридцать человек в летнем парке по команде «три-четыре» хором кричат
+          «Долой уныние!» и вскидывают руки.
+        </p>
+      </section>
+      <!-- Сцена 6 «Выдох» — «стол после праздника» (DL Г7): поп-слой в законной зоне,
+           мем только в паре с возражением (DL 88) -->
+      <section class="scene scene-6" id="scene-6" data-scene="6" aria-label="Выдох">
+        <div class="spread s6-grid">
+          <figure class="sticker s6-pop">
+            <video
+              class="s6-pop-video"
+              id="pop-video"
+              playsinline
+              muted
+              loop
+              preload="none"
+              poster="/media/pop-poster.jpg"
+              aria-label="Смонтированный сообществом ролик: толпа машет руками на радужном фоне с сердечками и котятами, надпись «Долой уныние!»"
+            >
+              <source src="/media/pop.webm" type="video/webm" />
+              <source src="/media/pop.mp4" type="video/mp4" />
+            </video>
+            <figcaption class="t-caption s6-pop-caption">
+              Это не&nbsp;мы придумали для сайта&nbsp;— это они сами так монтируют.
+            </figcaption>
+          </figure>
+          <div class="s6-money">
+            <p class="t-line">Бесплатно. Подвох искали до&nbsp;вас&nbsp;— не&nbsp;нашли.</p>
+            <p class="t-voice s6-money-voice">
+              Проект живёт на&nbsp;донатах&nbsp;— чтобы не&nbsp;зависеть от&nbsp;грантов,
+              инвесторов и&nbsp;рекламодателей. Пока мероприятия бесплатны. Если однажды
+              станут за&nbsp;небольшой донат&nbsp;— скажем заранее, а&nbsp;не&nbsp;мелким шрифтом.
+            </p>
+            <img
+              class="sticker s6-meme"
+              src="/media/meme-money.png"
+              alt="Мем: кот в костюме за столом с деньгами и икрой, подпись «АЛЛО, БИЗНЕС!! ДА ДА ДЕНЬГИ»."
+              width="308"
+              height="205"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Сцена 7 «Автор» — четвёртая стена: фигура-наклейка + три вопроса скептика -->
+      <section class="scene scene-7" id="scene-7" data-scene="7" aria-label="Автор">
+        <div class="spread s7-grid">
+          <img
+            class="s7-figure"
+            src="/media/ilya@900.png"
+            alt="Илья жмурится и морщится, прижимая к плечу кинохлопушку."
+            width="900"
+            height="576"
+            loading="lazy"
+          />
+          <div class="s7-bio">
+            <p class="t-line">Илья. Это он всё устроил.</p>
+            <p class="t-voice s7-bio-voice">
+              Организует «Долой уныние» в&nbsp;Петербурге. Написал две книги
+              в&nbsp;издательстве Livrezon, десять лет исследует, как молодёжи жить
+              повеселее, собрал сообщество YouBe на&nbsp;десять тысяч человек.
+            </p>
+          </div>
+        </div>
+        <div class="spread s7-dialog">
+          <div class="s7-qa">
+            <!-- TODO: вопросы заменить на сканы рукописи (DL 9.3) -->
+            <p class="s7-q">— Откуда у&nbsp;тебя мой контакт?</p>
+            <p class="t-voice s7-a">
+              Либо от&nbsp;участников&nbsp;— твоих знакомых, либо из&nbsp;сообществ активной
+              молодёжи Петербурга, которые я&nbsp;знаю и&nbsp;уважаю. Так что если
+              я&nbsp;вам написал&nbsp;— вы крутые.
+            </p>
+          </div>
+          <div class="s7-qa">
+            <p class="s7-q">— Что мне за&nbsp;это будет?</p>
+            <p class="t-voice s7-a">
+              Три часа командной работы, выступление без подготовки, десяток новых
+              знакомых и&nbsp;один общий крик. Всё.
+            </p>
+          </div>
+          <div class="s7-qa s7-qa-scam">
+            <div>
+              <p class="s7-q">— Вы мошенники?</p>
+              <p class="t-voice s7-a">Нет.</p>
+            </div>
+            <img
+              class="sticker s7-meme"
+              src="/media/meme-scam.png"
+              alt="Мем: человек в балаклаве говорит по телефону, подпись «Я спросил: вы мошенники? Они сказали: нет»."
+              width="269"
+              height="192"
+              loading="lazy"
+            />
+          </div>
+          <p class="t-voice s7-contact">
+            Проверить лично: <a href="https://t.me/yoube_matters">телеграм @yoube_matters</a>
+          </p>
+        </div>
+      </section>
+      <!-- Сцена 8 «Твоё воскресенье» — архетип «Анкета» (DL Г8): расписание,
+           проводник из трёх честных шагов, эхо кульминации, единственная кнопка -->
+      <section class="scene scene-8" id="scene-8" data-scene="8" aria-label="Твоё воскресенье">
+        <div class="spread">
+          <div class="s8-when">
+            <div class="s8-when-text">
+              <p class="t-line">Раз в&nbsp;две недели. Воскресенье, 13:00–16:00.</p>
+              <p class="t-voice s8-dates">
+                <!-- TODO: проверить актуальность дат перед релизом (DL Ж7) -->
+                Ближайшие: 26&nbsp;июля, 9&nbsp;августа, 23&nbsp;августа.
+                Серия запланирована до&nbsp;конца 2026&nbsp;года&nbsp;— не&nbsp;успел
+                сегодня, приходи через две недели.
+              </p>
+            </div>
+            <figure class="s8-winter">
+              <img
+                src="/media/crowd-winter@800.jpg"
+                srcset="/media/crowd-winter@800.jpg 800w, /media/crowd-winter@1600.jpg 1600w"
+                sizes="(max-width: 700px) 92vw, 26rem"
+                alt="Другой сезон, тот же полный зал: почти тридцать человек у баннера ПРОСТО."
+                width="800"
+                height="450"
+                loading="lazy"
+              />
+              <figcaption class="t-caption">Каждые две недели&nbsp;— вот так.</figcaption>
+            </figure>
+          </div>
+
+          <div class="s8-steps">
+            <p class="t-line s8-steps-title">Три шага, минут пять. Дальше&nbsp;— воскресенье.</p>
+            <ol class="s8-list">
+              <li class="s8-step">
+                <p class="t-voice">
+                  Создай личный кабинет на&nbsp;сайте площадки&nbsp;—
+                  <a href="https://www.prostospb.team/" target="_blank" rel="noopener"
+                    >prostospb.team</a
+                  >. Площадка пускает с&nbsp;14 до&nbsp;35&nbsp;лет&nbsp;— их правила,
+                  не&nbsp;наши.
+                </p>
+              </li>
+              <li class="s8-step">
+                <p class="t-voice">
+                  Забронируй коворкинг на&nbsp;день мероприятия, с&nbsp;12:00
+                  до&nbsp;17:00&nbsp;—
+                  <a
+                    href="https://www.prostospb.team/coworking/reg"
+                    target="_blank"
+                    rel="noopener"
+                    >prostospb.team/coworking/reg</a
+                  >.
+                </p>
+              </li>
+              <li class="s8-step">
+                <p class="t-voice">
+                  Возьми паспорт. «Точка кипения» без него не&nbsp;пустит&nbsp;— такие
+                  правила, зато один раз.
+                </p>
+              </li>
+            </ol>
+            <figure class="s8-door">
+              <img
+                src="/media/door@800.jpg"
+                alt="Вход в здание с вывеской «Точка кипения» — бежевый фасад, стеклянные двери."
+                width="800"
+                height="596"
+                loading="lazy"
+              />
+              <figcaption class="t-caption">
+                Вот эта дверь: наб. Карповки, 5АК. Лифт на&nbsp;5-й этаж, стойка
+                регистрации, Лекторий&nbsp;№1.
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="s8-go">
+            <figure class="s8-echo">
+              <video
+                class="s8-echo-video"
+                id="echo-video"
+                playsinline
+                muted
+                preload="none"
+                poster="/media/echo-poster.jpg"
+                aria-label="Двухсекундное видео: полный зал с поднятыми кулаками кричит «Долой уныние»."
+              >
+                <source src="/media/echo.webm" type="video/webm" />
+                <source src="/media/echo.mp4" type="video/mp4" />
+              </video>
+              <figcaption class="t-caption">Так закончится и&nbsp;твоё воскресенье.</figcaption>
+            </figure>
+            <div class="s8-cta">
+              <p class="t-voice s8-cta-note">
+                Придёшь&nbsp;— тебя встретят. Первые двадцать минут мы просто общаемся.
+                Можно с&nbsp;друзьями: пришли Илье ники тех, кого берёшь с&nbsp;собой.
+              </p>
+              <a class="btn-door" href="https://t.me/yoube_matters"
+                >Займу место в&nbsp;воскресенье</a
+              >
+              <img
+                class="sticker s8-meme"
+                src="/media/meme-friends.jpg"
+                alt="Кадр из сериала «Друзья»: вся компания в нелепых костюмах на вечеринке."
+                width="302"
+                height="205"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Сцена 9 «Титр» — кольцо «шёпот → крик → шёпот» замыкается -->
+      <section class="scene scene-9" id="scene-9" data-scene="9" aria-label="Титр">
+        <p class="t-title s9-title">До&nbsp;встречи в&nbsp;воскресенье. 13:00.</p>
+        <p class="t-whisper s9-whisper">долой уныние</p>
+        <p class="t-caption s9-links">
+          <a href="https://t.me/yoube_project" target="_blank" rel="noopener"
+            >анонсы: t.me/yoube_project</a
+          >
+          · <a href="https://t.me/yoube_matters">написать Илье</a> ·
+          <a
+            href="https://telegra.ph/FAQ-meropriyatiya-Doloj-unynie-07-11"
+            target="_blank"
+            rel="noopener"
+            >FAQ</a
+          >
+        </p>
+      </section>
     </main>
   </body>
 </html>

@@ -1,0 +1,49 @@
+/* Сцена 6 «Выдох» — самый свободный разворот фильма.
+   Наклейки с чередованием наклонов, бумага остаётся видимой базой (DL 3.3). */
+
+.scene-6 {
+  padding-block: calc(var(--takt) * 8);
+}
+
+.s6-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: calc(var(--takt) * 2);
+  align-items: start;
+}
+
+.s6-pop {
+  grid-column: 1 / span 5;
+  --tilt: -2.5deg;
+  margin-block-start: calc(var(--takt) * 2);
+}
+
+.s6-pop-video {
+  width: 100%;
+}
+
+.s6-pop-caption {
+  background: #fff;
+  padding: 0.5em 0.75em;
+}
+
+.s6-money {
+  grid-column: 7 / span 6;
+}
+
+.s6-money-voice {
+  margin-block-start: var(--pause-thought);
+}
+
+.s6-meme {
+  --tilt: 2deg;
+  margin-block-start: calc(var(--takt) * 2);
+  max-inline-size: 19rem;
+}
+
+@media (max-width: 700px) {
+  .s6-pop,
+  .s6-money {
+    grid-column: 1 / -1;
+  }
+}

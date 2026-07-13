@@ -1,0 +1,161 @@
+/* Сцена 8 «Твоё воскресенье» — проводник: ясность важнее выразительности.
+   Шаги — строки анкеты, не коробки (DL 13). Кнопка — наклейка-дверь (DL 10). */
+
+.scene-8 {
+  padding-block: calc(var(--takt) * 8);
+}
+
+.s8-when {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: calc(var(--takt) * 2);
+  align-items: center;
+}
+
+.s8-when-text {
+  grid-column: 1 / span 6;
+}
+
+.s8-dates {
+  margin-block-start: var(--pause-thought);
+}
+
+.s8-winter {
+  grid-column: 8 / span 5;
+}
+
+.s8-winter figcaption {
+  margin-block-start: calc(var(--takt) * 0.5);
+}
+
+/* Проводник */
+.s8-steps {
+  margin-block-start: calc(var(--takt) * 6);
+  max-inline-size: 44rem;
+}
+
+.s8-list {
+  margin-block-start: calc(var(--takt) * 2);
+  padding-inline-start: 0;
+  list-style: none;
+  counter-reset: step;
+  display: grid;
+  gap: calc(var(--takt) * 1.5);
+}
+
+/* Номер шага — типографика, не коробка (DL 11.2) */
+.s8-step {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 2.5em 1fr;
+  gap: 0.5em;
+}
+
+.s8-step::before {
+  content: counter(step);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6em;
+  line-height: 1.2;
+  color: var(--frog);
+}
+
+.s8-door {
+  margin-block-start: calc(var(--takt) * 3);
+  max-inline-size: 26rem;
+  margin-inline-start: 3em; /* прижата к шагам — часть проводника */
+}
+
+.s8-door figcaption {
+  margin-block-start: calc(var(--takt) * 0.5);
+}
+
+/* Дверь: эхо + кнопка */
+.s8-go {
+  margin-block-start: calc(var(--takt) * 6);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: calc(var(--takt) * 2);
+  align-items: center;
+}
+
+.s8-echo {
+  grid-column: 1 / span 5;
+}
+
+.s8-echo figcaption {
+  margin-block-start: calc(var(--takt) * 0.5);
+}
+
+.s8-cta {
+  grid-column: 7 / span 6;
+}
+
+.s8-cta-note {
+  margin-block-end: calc(var(--takt) * 1.5);
+}
+
+.s8-meme {
+  --tilt: 2.5deg;
+  margin-block-start: calc(var(--takt) * 2.5);
+  max-inline-size: 15rem;
+}
+
+/* Кнопка-наклейка: лежит поверх стола, потому и нажимается (DL 10.1).
+   Hover — поддаётся, active — прижимается. Никаких перекрасок. */
+.btn-door {
+  display: inline-block;
+  background: var(--scream);
+  color: var(--scream-ink);
+  font-family: var(--font-voice);
+  font-weight: 600;
+  font-size: calc(var(--voice-size) * 1.2);
+  text-decoration: none;
+  padding: 0.85em 1.4em;
+  box-shadow: var(--paper-shadow);
+  transform: rotate(-1deg);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.btn-door:hover,
+.btn-door:focus-visible {
+  transform: rotate(-1deg) translateY(-2px);
+  box-shadow: var(--paper-shadow-lifted);
+}
+
+.btn-door:active {
+  transform: rotate(-1deg) translateY(1px);
+  box-shadow: none;
+}
+
+@media (max-width: 700px) {
+  .s8-when-text,
+  .s8-winter,
+  .s8-echo,
+  .s8-cta {
+    grid-column: 1 / -1;
+  }
+
+  .s8-door {
+    margin-inline-start: 0;
+  }
+}
+
+/* Сцена 9 «Титр» — рифма к прологу в дневном свете */
+.scene-9 {
+  min-height: 70svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: calc(var(--takt) * 3);
+}
+
+.s9-title {
+  max-inline-size: 16em;
+}
+
+.s9-links {
+  color: color-mix(in srgb, var(--ink) 65%, var(--surface));
+}

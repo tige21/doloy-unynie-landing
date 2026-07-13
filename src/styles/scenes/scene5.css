@@ -1,0 +1,65 @@
+/* Сцена 5 «КРИК» — архетип «Событие» (DL Г6): видео занимает всё,
+   никакого интерфейса. Слова скрыты до ударов (climax.ts, 3.4с/4.7с).
+   Мобильная версия: видео 16:9 по центру, слова над и под кадром —
+   волны состояния захватывают весь вьюпорт (EXPERIENCE-SCRIPT §13). */
+
+.scene-5 {
+  padding: 0;
+  min-height: 100svh;
+}
+
+.s5-stage {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+}
+
+.s5-video {
+  width: 100%;
+}
+
+/* Слова крика: до удара не существуют */
+.s5-word {
+  opacity: 0;
+  text-align: center;
+  z-index: 2;
+}
+
+.s5-word.is-struck {
+  opacity: 1;
+}
+
+/* Десктоп: видео — весь кадр, фраза собирается поверх */
+@media (min-width: 701px) {
+  .s5-video {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .s5-word {
+    position: relative;
+    color: var(--paper);
+  }
+
+  .s5-word-doloy {
+    align-self: end;
+  }
+
+  .s5-word-unynie {
+    align-self: start;
+  }
+}
+
+/* Мобайл: слова на поверхности страницы вокруг кадра */
+@media (max-width: 700px) {
+  .s5-stage {
+    row-gap: calc(var(--takt) * 1);
+  }
+
+  .s5-word {
+    color: var(--ink);
+  }
+}

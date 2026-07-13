@@ -1,0 +1,50 @@
+/* Сцена 2 «Дверь открыта» — событие «первое лицо», затем доминанта-толпа.
+   Асимметрия, подписи при кадрах (закон близости DL 5.4),
+   толпа уходит за края («нас больше, чем видно», DL 5.5). */
+
+.scene-2 {
+  padding-block-start: var(--pause-scene);
+}
+
+.s2-timecode {
+  font-size: clamp(1.1rem, 1rem + 0.8vw, 1.6rem);
+  color: color-mix(in srgb, var(--ink) 70%, var(--surface));
+  margin-block-end: calc(var(--takt) * 2);
+}
+
+/* Первое лицо — событие: вертикальный фрагмент, не на всю ширину */
+.s2-first {
+  max-inline-size: 26rem;
+  margin-inline-start: clamp(0rem, 6vw, 7rem); /* асимметрия: сдвиг влево от центра */
+}
+
+.s2-first figcaption {
+  margin-block-start: calc(var(--takt) * 0.5);
+}
+
+/* Доминанта: полный кадр с вылетом за поля сцены */
+.s2-crowd {
+  margin-block-start: calc(var(--takt) * 6);
+  margin-inline: calc(-1 * clamp(1.25rem, 4vw, 4rem));
+}
+
+.s2-crowd img {
+  width: 100%;
+}
+
+.s2-crowd-caption {
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+  margin-block-start: calc(var(--takt) * 0.75);
+}
+
+/* Камерный состав — «кадр с полями», сдвинут вправо (асимметрия к первому) */
+.s2-small {
+  max-inline-size: 44rem;
+  margin-block-start: calc(var(--takt) * 6);
+  margin-inline-start: auto;
+  margin-inline-end: clamp(0rem, 3vw, 3rem);
+}
+
+.s2-small figcaption {
+  margin-block-start: calc(var(--takt) * 0.5);
+}

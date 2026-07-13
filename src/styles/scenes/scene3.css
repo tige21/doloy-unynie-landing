@@ -1,0 +1,59 @@
+/* Сцена 3 «Ты в команде» — доминанта процесса, правила на крем-плашке
+   (без карточек и иконок — DL 11–12), переворот РЕПЛИКОЙ, один выпад. */
+
+.s3-process {
+  margin-inline: calc(-1 * clamp(1.25rem, 4vw, 4rem));
+}
+
+.s3-process img {
+  width: 100%;
+}
+
+.s3-process-caption {
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+  margin-block-start: calc(var(--takt) * 0.75);
+}
+
+.s3-rules-wrap {
+  margin-block-start: calc(var(--takt) * 5);
+}
+
+/* Правила — строки разного веса, не коробки */
+.s3-rules {
+  max-inline-size: 34rem;
+  display: grid;
+  gap: calc(var(--takt) * 0.5);
+}
+
+.s3-rule {
+  font-size: var(--voice-size);
+  line-height: var(--voice-leading);
+}
+
+.s3-rule-main {
+  font-weight: 600;
+  font-size: calc(var(--voice-size) * 1.15);
+}
+
+.s3-turn {
+  margin-block-start: calc(var(--takt) * 6);
+}
+
+.s3-turn-voice {
+  margin-block-start: calc(var(--takt) * 1);
+}
+
+/* Выпад анти-нетворкинга: единственная почти лобовая постановка сцены —
+   удар держат слова (AD 3.2) */
+.s3-jab {
+  margin-block-start: calc(var(--takt) * 8);
+  display: grid;
+  justify-items: start;
+  max-inline-size: 44rem;
+  margin-inline: auto;
+}
+
+.s3-jab-punch {
+  margin-block-start: calc(var(--takt) * 1.5);
+  font-weight: 700;
+}

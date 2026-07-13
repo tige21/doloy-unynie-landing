@@ -1,0 +1,69 @@
+/* Сцена 7 «Автор» — фигура-наклейка (белый контур по альфе — DL 9.2.1)
+   и три пары «вопрос-ответ» без аккордеона (DL 17). */
+
+.scene-7 {
+  padding-block: calc(var(--takt) * 8);
+}
+
+.s7-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: calc(var(--takt) * 2);
+  align-items: center;
+}
+
+/* Контур вырезки для PNG с альфой: четыре жёстких белых drop-shadow
+   (это контур наклейки, не тень) + бумажная тень */
+.s7-figure {
+  grid-column: 7 / span 6;
+  transform: rotate(2deg);
+  filter: drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff)
+    drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff)
+    drop-shadow(0 4px 8px rgba(72, 60, 44, 0.22));
+}
+
+.s7-bio {
+  grid-column: 1 / span 5;
+  grid-row: 1;
+}
+
+.s7-bio-voice {
+  margin-block-start: var(--pause-thought);
+}
+
+.s7-dialog {
+  margin-block-start: calc(var(--takt) * 6);
+  display: grid;
+  gap: calc(var(--takt) * 3);
+  max-inline-size: 44rem;
+}
+
+/* Вопрос скептика — заглушка рукописи (TODO: заменить сканом маркера, DL 4.2) */
+.s7-q {
+  font-family: var(--font-voice);
+  font-weight: 600;
+  font-size: calc(var(--voice-size) * 1.1);
+  text-decoration: underline wavy color-mix(in srgb, var(--frog) 70%, transparent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.s7-a {
+  margin-block-start: calc(var(--takt) * 0.75);
+}
+
+.s7-qa-scam {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--takt) * 1.5);
+  align-items: center;
+}
+
+.s7-meme {
+  --tilt: -2deg;
+  max-inline-size: 16rem;
+}
+
+.s7-contact {
+  margin-block-start: calc(var(--takt) * 1);
+}

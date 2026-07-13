@@ -1,0 +1,21 @@
+/* Сцена 0 «Серое утро» — архетип «Тишина» (DL Г1).
+   Один малый объект + одна строка, асимметрия покоя:
+   правая часть кадра пустее левой. Никаких изображений. */
+
+.scene-0 {
+  min-height: 120svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: var(--pause-scene-quiet);
+}
+
+.s0-whisper {
+  margin-block-end: calc(var(--takt) * 4);
+  margin-inline-start: clamp(0rem, 4vw, 4rem);
+}
+
+.s0-line {
+  max-inline-size: 18em; /* строка не тянется на всю ширину — воздух справа */
+  margin-inline-start: clamp(0rem, 4vw, 4rem);
+}

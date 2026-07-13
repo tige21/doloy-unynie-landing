@@ -8,7 +8,19 @@ import '@fontsource-variable/unbounded/index.css';
 import './styles/tokens.css';
 import './styles/typography.css';
 import './styles/base.css';
+import './styles/scenes/scene0.css';
+import './styles/scenes/scene1.css';
+import './styles/scenes/scene2.css';
+import './styles/scenes/scene3.css';
+import './styles/scenes/scene4.css';
+import './styles/scenes/scene5.css';
+import './styles/scenes/scene6.css';
+import './styles/scenes/scene7.css';
+import './styles/scenes/scene8.css';
 import { dbg, debugEnabled } from './lib/debug';
+import { initSoundConsent } from './lib/sound-consent';
+
+initSoundConsent();
 
 dbg('state', 'init', {
   state: document.documentElement.dataset.state,

@@ -1,0 +1,24 @@
+/* Сцена 1 «Исповедь» — архетип «Монолог» (DL Г2).
+   Одна мысль на вьюпорт; первое из двух допустимых центрирований фильма
+   (DL 4.4.4 — жест серьёзности). Капля цвета — на повороте. */
+
+.scene-1 {
+  padding-block: var(--pause-scene-quiet);
+}
+
+.s1-step {
+  min-height: 88svh;
+  display: grid;
+  place-content: center;
+}
+
+.s1-thought {
+  text-align: center;
+  max-inline-size: 22em;
+}
+
+/* Капля КРИКА: первая краска фильма (DL 3.3, сцена 1) —
+   площадь «капли»: одна фраза, не плашка */
+.s1-drop {
+  color: var(--scream);
+}
