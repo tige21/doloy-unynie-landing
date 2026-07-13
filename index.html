@@ -25,67 +25,69 @@
   <body>
     <main id="film">
       <!-- Сцена 0 «Серое утро»: тишина, ни одного изображения (DL 17) -->
-      <section class="scene scene-0" id="scene-0" data-scene="0" aria-label="Серое утро">
+      <section class="scene scene-0" id="scene-0" data-scene="0" aria-label="Ночь. Пролог">
+        <p class="t-outline s0-bg" aria-hidden="true">долой<br />уныние</p>
         <p class="t-whisper s0-whisper">долой уныние</p>
         <h1 class="t-title s0-line">
-          Воскресенье, 12:40.<br />
-          Можно остаться дома.<br />
-          Как обычно.
+          <span class="s0-row">Воскресенье, 12:40.</span><br />
+          <span class="s0-row">Можно остаться дома.</span><br />
+          <span class="s0-row">Как обычно.</span>
         </h1>
       </section>
 
-      <!-- Сцена 1 «Исповедь»: текст — единственный актёр; поэтическая разбивка -->
+      <!-- Сцена 1 «Исповедь»: pinned — три мысли в одном экране (v2) -->
       <section class="scene scene-1" id="scene-1" data-scene="1" aria-label="Исповедь">
-        <div class="s1-step">
-          <p class="t-line s1-thought">
-            Половина моих знакомых до&nbsp;30&nbsp;лет&nbsp;—<br />
-            на&nbsp;психотерапии и&nbsp;антидепрессантах.
-          </p>
-        </div>
-        <div class="s1-step">
-          <p class="t-line s1-thought">Я&nbsp;и&nbsp;сам склонен к&nbsp;унынию.</p>
-        </div>
-        <div class="s1-step">
-          <p class="t-line s1-thought">
-            Единственное, что помогает&nbsp;—<br />
-            раз в&nbsp;две недели собирать активных людей вместе,<br />
-            чтобы остатками позитива<br />
-            <span class="s1-drop">вдарить по&nbsp;безнадёге!</span>
-          </p>
+        <div class="s1-stage">
+          <div class="s1-step">
+            <p class="t-line s1-thought">
+              Половина моих знакомых до&nbsp;30&nbsp;лет&nbsp;—<br />
+              на&nbsp;психотерапии и&nbsp;антидепрессантах.
+            </p>
+          </div>
+          <div class="s1-step">
+            <p class="t-line s1-thought">Я&nbsp;и&nbsp;сам склонен к&nbsp;унынию.</p>
+          </div>
+          <div class="s1-step">
+            <p class="t-line s1-thought">
+              Единственное, что помогает&nbsp;—<br />
+              раз в&nbsp;две недели собирать активных людей вместе,<br />
+              чтобы остатками позитива<br />
+              <span class="s1-drop">вдарить по&nbsp;безнадёге!</span>
+            </p>
+          </div>
         </div>
       </section>
       <!-- Сцена 2 «Дверь открыта»: событие «первое лицо» → толпа (приём «фрагмент→целое») -->
       <section class="scene scene-2" id="scene-2" data-scene="2" aria-label="Дверь открыта">
-        <div class="spread">
-          <p class="stamp">13:00</p>
-          <figure class="s2-first print" style="--tilt: -1.5deg">
+        <div class="s2-stage">
+          <p class="stamp s2-stamp">13:00</p>
+          <figure class="s2-first">
             <img
               src="/media/crowd-vert@800.jpg"
-              data-distort
               alt="Несколько человек стоят близко: спокойные лица, кто-то держит табличку «Команда №1». Первые, кого встречаешь у двери."
               width="800"
               height="1000"
               loading="lazy"
             />
-            <figcaption class="t-caption">Дверь открыта. Заходи.</figcaption>
+            <figcaption class="t-caption s2-first-caption">Дверь открыта. Заходи.</figcaption>
+          </figure>
+          <figure class="s2-crowd">
+            <img
+              src="/media/crowd@1600.jpg"
+              data-distort
+              srcset="/media/crowd@800.jpg 800w, /media/crowd@1600.jpg 1600w"
+              sizes="100vw"
+              alt="Человек тридцать в светлом зале, все улыбаются и смотрят в камеру. Толпа не помещается в кадр."
+              width="1600"
+              height="900"
+              loading="lazy"
+            />
+            <figcaption class="t-caption s2-crowd-caption">
+              Вход с&nbsp;13:00. Первые двадцать минут просто общаемся и&nbsp;ждём всех.
+              Опаздывать можно, стесняться&nbsp;— тоже.
+            </figcaption>
           </figure>
         </div>
-        <figure class="s2-crowd">
-          <img
-            src="/media/crowd@1600.jpg"
-            data-distort
-            srcset="/media/crowd@800.jpg 800w, /media/crowd@1600.jpg 1600w"
-            sizes="100vw"
-            alt="Человек тридцать в светлом зале, все улыбаются и смотрят в камеру. Толпа не помещается в кадр."
-            width="1600"
-            height="900"
-            loading="lazy"
-          />
-          <figcaption class="t-caption s2-crowd-caption">
-            Вход с&nbsp;13:00. Первые двадцать минут просто общаемся и&nbsp;ждём всех.
-            Опаздывать можно, стесняться&nbsp;— тоже.
-          </figcaption>
-        </figure>
         <div class="spread">
           <figure class="s2-small print" style="--tilt: 1.2deg">
             <img

@@ -1,44 +1,100 @@
-/* Сцена 2 «Дверь открыта» — событие «первое лицо», затем доминанта-толпа.
-   Асимметрия, подписи при кадрах (закон близости DL 5.4),
-   толпа уходит за края («нас больше, чем видно», DL 5.5). */
+/* Сцена 2 «Дверь открыта» v2 — pinned scrub-зум: камера «отъезжает»
+   от двоих у двери к полной толпе. Reduce-motion: обычный поток. */
 
 .scene-2 {
-  padding-block-start: var(--pause-scene);
+  padding-block: calc(var(--takt) * 3);
 }
 
-.scene-2 .stamp {
-  margin-block-end: calc(var(--takt) * 2);
+.s2-stage {
+  position: relative;
 }
 
-/* Первое лицо — событие: вертикальный фрагмент-отпечаток, не на всю ширину */
+.s2-stamp {
+  margin-block-end: calc(var(--takt) * 1.5);
+}
+
+/* --- Статичный поток (reduce-motion / до инициализации) --- */
 .s2-first {
-  max-inline-size: 26rem;
-  margin-inline-start: clamp(0rem, 6vw, 7rem); /* асимметрия: сдвиг влево от центра */
+  max-inline-size: 24rem;
+  margin-inline: auto;
 }
 
-.s2-first figcaption {
-  margin-block-start: calc(var(--takt) * 0.5);
+.s2-first-caption,
+.s2-crowd-caption {
+  margin-block-start: calc(var(--takt) * 0.6);
 }
 
-/* Доминанта: полный кадр с вылетом за поля сцены */
 .s2-crowd {
-  margin-block-start: calc(var(--takt) * 6);
-  margin-inline: calc(-1 * clamp(1.25rem, 4vw, 4rem));
+  margin-block-start: calc(var(--takt) * 3);
 }
 
 .s2-crowd img {
   width: 100%;
 }
 
-.s2-crowd-caption {
-  padding-inline: clamp(1.25rem, 4vw, 4rem);
-  margin-block-start: calc(var(--takt) * 0.75);
+/* --- Pinned-режим (класс вешает door.ts) --- */
+.scene-2.is-pinned {
+  padding-block: 0;
 }
 
-/* Камерный состав — «кадр с полями», сдвинут вправо (асимметрия к первому) */
+.scene-2.is-pinned .s2-stage {
+  height: 100svh;
+  overflow: hidden;
+}
+
+.scene-2.is-pinned .s2-stamp {
+  position: absolute;
+  top: calc(var(--takt) * 1.5);
+  left: clamp(1.25rem, 4vw, 4rem);
+  z-index: 4;
+}
+
+.scene-2.is-pinned .s2-first {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  z-index: 3;
+  margin: 0;
+  max-inline-size: none;
+}
+
+.scene-2.is-pinned .s2-first img {
+  max-height: 76svh;
+  width: auto;
+}
+
+.scene-2.is-pinned .s2-first-caption {
+  text-align: center;
+}
+
+.scene-2.is-pinned .s2-crowd {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  z-index: 1;
+}
+
+.scene-2.is-pinned .s2-crowd img {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Подпись поверх кадра — градиентная подложка (ревизия REDESIGN-NOTES) */
+.scene-2.is-pinned .s2-crowd-caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  margin: 0;
+  padding: calc(var(--takt) * 3) clamp(1.25rem, 4vw, 4rem) calc(var(--takt) * 1);
+  background: linear-gradient(transparent, rgba(16, 14, 12, 0.62));
+  color: var(--paper);
+  max-inline-size: none;
+  z-index: 2;
+}
+
 .s2-small {
   max-inline-size: 44rem;
-  margin-block-start: calc(var(--takt) * 6);
+  margin-block-start: calc(var(--takt) * 4);
   margin-inline-start: auto;
   margin-inline-end: clamp(0rem, 3vw, 3rem);
 }

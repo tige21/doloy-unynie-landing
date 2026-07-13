@@ -1,23 +1,44 @@
-/* Сцена 0 «Серое утро» — архетип «Тишина» (DL Г1).
-   Один малый объект + одна строка, асимметрия покоя:
-   правая часть кадра пустее левой. Никаких изображений. */
+/* Сцена 0 «Ночь. Пролог» v2 — кинематографический старт:
+   гигантский контур «ДОЛОЙ УНЫНИЕ» заполняет тьму, строка — событие. */
 
 .scene-0 {
-  min-height: 120svh;
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-block: var(--pause-scene-quiet);
+  padding-block: calc(var(--takt) * 4);
+}
+
+/* Фоновое слово: обрезано краями экрана — больше кадра */
+.s0-bg {
+  position: absolute;
+  right: -0.06em;
+  bottom: -0.14em;
+  font-size: clamp(7rem, 22vw, 22rem);
+  text-align: right;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .s0-whisper {
-  margin-block-end: calc(var(--takt) * 4);
+  position: relative;
+  z-index: 1;
+  margin-block-end: calc(var(--takt) * 3);
   margin-inline-start: clamp(0rem, 4vw, 4rem);
 }
 
 .s0-line {
-  /* локальный кегль: три строки обязаны стоять без переносов */
+  position: relative;
+  z-index: 1;
   font-size: clamp(2rem, 1rem + 4vw, 4.5rem);
   max-inline-size: 18em;
   margin-inline-start: clamp(0rem, 4vw, 4rem);
+}
+
+.s0-row {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
 }

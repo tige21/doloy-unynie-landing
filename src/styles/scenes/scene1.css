@@ -1,24 +1,39 @@
-/* Сцена 1 «Исповедь» — архетип «Монолог» (DL Г2).
-   Одна мысль на вьюпорт; первое из двух допустимых центрирований фильма
-   (DL 4.4.4 — жест серьёзности). Капля цвета — на повороте. */
+/* Сцена 1 «Исповедь» v2 — pinned: мысли сменяются в одном экране.
+   Absolute-слои включаются классом .is-pinned (только моушн-режим);
+   в reduce-motion шаги остаются обычным потоком — статика полноценна. */
 
 .scene-1 {
-  padding-block: var(--pause-scene-quiet);
+  padding-block: calc(var(--takt) * 2);
+}
+
+.s1-stage {
+  position: relative;
 }
 
 .s1-step {
-  min-height: 88svh;
+  min-height: 70svh;
   display: grid;
   place-content: center;
 }
 
-.s1-thought {
-  text-align: center;
-  max-inline-size: 22em;
+.scene-1.is-pinned .s1-stage {
+  height: 100svh;
 }
 
-/* Капля КРИКА: первая краска фильма (DL 3.3, сцена 1) —
-   цвет не вспыхивает, а проступает (AD, сцена 1) */
+.scene-1.is-pinned .s1-step {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+  padding-inline: clamp(1rem, 4vw, 4rem);
+}
+
+.s1-thought {
+  text-align: center;
+  max-inline-size: 20em;
+  font-size: clamp(1.75rem, 1.2rem + 2.4vw, 3.25rem);
+}
+
+/* Капля КРИКА: цвет проступает на повороте */
 .s1-drop {
   transition: color 2.4s ease;
 }

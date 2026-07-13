@@ -30,11 +30,19 @@ import { initMotion } from './lib/motion';
 import { initClimax, initEchoCycle, initPopLoop } from './lib/climax';
 import { initLoadingOrder } from './lib/degradation';
 
+import { initPrologue } from './lib/scenes/prologue';
+import { initDoorScene } from './lib/scenes/door';
+
 restoreState();
 initMotion();
 initSoundConsent();
-initStateTriggers();
-if (!prefersReducedMotion()) initReveals();
+if (prefersReducedMotion()) {
+  initStateTriggers(); // статика: рассвет по IO
+} else {
+  initReveals();
+  initPrologue(); // pinned-исповедь зовёт рассвет из таймлайна
+  initDoorScene();
+}
 initClimax();
 initEchoCycle();
 initPopLoop();
