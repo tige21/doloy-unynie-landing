@@ -218,8 +218,13 @@ export function initAtmosphere(): void {
     if (!document.hidden) {
       const dt = clock.getDelta();
       uniforms.uTime.value += dt;
-      uniforms.uWave.value =
-        waveStart < 0 ? 2 : Math.min((performance.now() - waveStart) / 900, 2);
+      // Fail-safe (фидбек: зависшая клякса): через 1.2с после strike фронт
+      // гарантированно завершён, что бы ни случилось с таймингом
+      const sinceWave = waveStart < 0 ? Infinity : performance.now() - waveStart;
+      uniforms.uWave.value = sinceWave > 1200 ? 2 : Math.min(sinceWave / 900, 2);
+      if (uniforms.uWave.value < 2 && Math.floor(uniforms.uTime.value) % 2 === 0) {
+        dbg('webgl', '[FIX] uWave', uniforms.uWave.value.toFixed(2), 'since', Math.round(sinceWave));
+      }
       for (const cb of frameCbs) cb(dt);
       renderer.render(scene, camera);
 

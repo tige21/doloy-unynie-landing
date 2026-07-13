@@ -25,12 +25,12 @@ export function initDoorScene(): void {
 
   pinScene(scene, 1.1, (tl) => {
     tl.fromTo(stamp, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0)
-      // «пролетаем сквозь» двоих: фрагмент растёт и растворяется
-      .to(first, { scale: 2.1, autoAlpha: 0, duration: 1.6, ease: 'power2.in' }, 0.5)
-      // за ним раскрывается толпа: отъезд камеры
-      .to(crowd, { autoAlpha: 1, duration: 0.9 }, 1.2)
-      .to(crowd.querySelector('img'), { scale: 1, duration: 1.8, ease: 'power2.out' }, 1.2)
-      .to(caption, { autoAlpha: 1, y: 0, duration: 0.8 }, 2.3)
+      // «пролетаем сквозь» двоих: фрагмент уходит ПОЛНОСТЬЮ до появления
+      // толпы — последовательность, а не «двойная экспозиция» (фидбек)
+      .to(first, { scale: 2.1, autoAlpha: 0, duration: 1.0, ease: 'power2.in' }, 0.4)
+      .to(crowd, { autoAlpha: 1, duration: 0.7 }, 1.45)
+      .to(crowd.querySelector('img'), { scale: 1, duration: 1.6, ease: 'power2.out' }, 1.45)
+      .to(caption, { autoAlpha: 1, y: 0, duration: 0.8 }, 2.4)
       .to({}, { duration: 0.7 }); // hold на толпе
   });
 

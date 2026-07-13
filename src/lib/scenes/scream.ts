@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { dbg } from '../debug';
 import { pinScene } from '../motion';
 import { startClimax } from '../climax';
@@ -19,8 +20,10 @@ export function initScreamGrowth(): void {
 
   gsap.set(video, { scale: 0.3 });
 
-  pinScene(scene, 1.1, (tl) => {
-    tl.to(video, { scale: 1, duration: 1, ease: 'power2.inOut' }, 0)
+  const words = scene.querySelectorAll<HTMLElement>('.s5-word');
+
+  const tl = pinScene(scene, 1.1, (t) => {
+    t.to(video, { scale: 1, duration: 1, ease: 'power2.inOut' }, 0)
       .call(
         () => {
           startClimax?.();
@@ -31,6 +34,28 @@ export function initScreamGrowth(): void {
       )
       .to({}, { duration: 0.9 }); // держим кадр: крик играет в реальном времени
   });
+
+  // Слова paper-цвета невидимы на светлой странице при неполном кадре —
+  // «призраки» (фидбек Img 3). На прогрессе <55% слова уводятся со сцены.
+  const st = tl.scrollTrigger;
+  if (st) {
+    let offstage: boolean | null = null;
+    const applyStage = (): void => {
+      const off = st.progress < 0.55;
+      if (off === offstage) return;
+      offstage = off;
+      words.forEach((w) => w.classList.toggle('is-offstage', off));
+      dbg('climax', off ? 'words offstage' : 'words onstage');
+    };
+    applyStage();
+    st.animation?.eventCallback('onUpdate', applyStage);
+    ScrollTrigger.create({
+      trigger: scene,
+      start: 'top bottom',
+      end: 'bottom top',
+      onUpdate: applyStage,
+    });
+  }
 
   dbg('scroll', 'scream growth ready');
 }

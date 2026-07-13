@@ -19,16 +19,42 @@ export function splitText(el: HTMLElement, mode: SplitMode): HTMLElement[] {
     `<span class="split-unit ${cls}" aria-hidden="true">${content}</span>`;
 
   if (mode === 'chars') {
-    // буквы группируются в nowrap-слова — иначе браузер рвёт слово посреди
-    el.innerHTML = text
-      .split(/(\s+)/)
-      .map((tok) => {
-        if (/^\s+$/.test(tok)) return ' ';
-        if (!tok) return '';
-        const chars = tok.split('').map((ch) => wrap(ch, 'split-char')).join('');
-        return `<span class="split-word-wrap" aria-hidden="true">${chars}</span>`;
-      })
-      .join('');
+    // Рекурсивный обход: вложенная разметка (<em class="mk"> и т.п.)
+    // сохраняется — сплитятся только текстовые ноды. Буквы группируются
+    // в nowrap-слова, чтобы браузер не рвал слово посреди.
+    const splitTextNode = (node: Node): void => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const t = node.textContent ?? '';
+        if (!t.trim()) return;
+        const frag = document.createDocumentFragment();
+        for (const tok of t.split(/(\s+)/)) {
+          if (!tok) continue;
+          if (/^\s+$/.test(tok)) {
+            frag.append(' ');
+            continue;
+          }
+          const w = document.createElement('span');
+          w.className = 'split-word-wrap';
+          w.setAttribute('aria-hidden', 'true');
+          for (const ch of tok) {
+            const c = document.createElement('span');
+            c.className = 'split-unit split-char';
+            c.setAttribute('aria-hidden', 'true');
+            c.textContent = ch;
+            w.append(c);
+          }
+          frag.append(w);
+        }
+        (node as ChildNode).replaceWith(frag);
+      } else if (
+        node.nodeType === Node.ELEMENT_NODE &&
+        !(node as HTMLElement).classList.contains('split-unit')
+      ) {
+        Array.from(node.childNodes).forEach(splitTextNode);
+      }
+    };
+    Array.from(el.childNodes).forEach(splitTextNode);
+    dbg('scroll', '[FIX] split preserved markup:', el.querySelectorAll('em, strong, a').length, 'elements');
   } else {
     // words (и базис для lines): каждый пробельный токен — спан
     el.innerHTML = text
