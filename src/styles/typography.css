@@ -11,7 +11,8 @@
   font-size: 0.8125rem;
   font-weight: 400;
   letter-spacing: 0.22em;
-  color: color-mix(in srgb, var(--ink) 52%, var(--surface));
+  /* 72% графита: минимум для AA-контраста на сером утре (расчёт 4.8:1) */
+  color: color-mix(in srgb, var(--ink) 72%, var(--surface));
 }
 
 /* 2. ПОДПИСЬ — титры-факты при фотографиях; всегда при объекте */

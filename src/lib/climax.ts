@@ -164,21 +164,24 @@ export function initClimax(): void {
   io.observe(scene);
 
   // Страховка пролистывателя: кульминация настигает на любой скорости —
-  // вход в сцену 6 гарантирует état after и собранную фразу
-  const after = document.getElementById('scene-6');
-  if (after) {
-    const io6 = new IntersectionObserver(
+  // видимость ЛЮБОЙ сцены после крика гарантирует after и собранную фразу
+  // (одной сцены 6 мало: прыжок в самый низ страницы её минует)
+  const afterScenes = ['scene-6', 'scene-7', 'scene-8', 'scene-9']
+    .map((id) => document.getElementById(id))
+    .filter((el): el is HTMLElement => el !== null);
+  if (afterScenes.length > 0) {
+    const ioAfter = new IntersectionObserver(
       (es) => {
         if (es.some((e) => e.isIntersecting)) {
           if (document.documentElement.dataset.state !== 'after') {
             staticClimax('skipped past climax');
           }
-          io6.disconnect();
+          ioAfter.disconnect();
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.05 },
     );
-    io6.observe(after);
+    afterScenes.forEach((el) => ioAfter.observe(el));
   }
 }
 

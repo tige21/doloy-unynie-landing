@@ -7,7 +7,7 @@
 
 .s8-when {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: calc(var(--takt) * 2);
   align-items: center;
 }
@@ -74,7 +74,7 @@
 .s8-go {
   margin-block-start: calc(var(--takt) * 6);
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: calc(var(--takt) * 2);
   align-items: center;
 }
@@ -106,7 +106,7 @@
 .btn-door {
   display: inline-block;
   background: var(--scream);
-  color: var(--scream-ink);
+  color: var(--graphite); /* тёмный текст на крике: 4.6:1 против 2.9:1 у светлого */
   font-family: var(--font-voice);
   font-weight: 600;
   font-size: calc(var(--voice-size) * 1.2);
@@ -157,5 +157,5 @@
 }
 
 .s9-links {
-  color: color-mix(in srgb, var(--ink) 65%, var(--surface));
+  color: color-mix(in srgb, var(--ink) 75%, var(--surface));
 }

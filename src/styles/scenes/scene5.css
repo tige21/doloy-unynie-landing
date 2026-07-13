@@ -99,5 +99,6 @@
 
   .s5-word {
     color: var(--ink);
+    font-size: min(14vw, 12rem); /* «УНЫНИЕ!» с «!» влезает целиком */
   }
 }

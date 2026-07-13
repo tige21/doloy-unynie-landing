@@ -7,7 +7,7 @@
 
 .s7-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: calc(var(--takt) * 2);
   align-items: center;
 }
@@ -66,4 +66,17 @@
 
 .s7-contact {
   margin-block-start: calc(var(--takt) * 1);
+}
+
+@media (max-width: 700px) {
+  .s7-figure,
+  .s7-bio {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .s7-figure {
+    max-inline-size: 22rem;
+    justify-self: center;
+  }
 }
