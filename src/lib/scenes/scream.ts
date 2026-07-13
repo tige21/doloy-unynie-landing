@@ -19,7 +19,7 @@ export function initScreamGrowth(): void {
 
   gsap.set(video, { scale: 0.3 });
 
-  pinScene(scene, 1.8, (tl) => {
+  pinScene(scene, 1.1, (tl) => {
     tl.to(video, { scale: 1, duration: 1, ease: 'power2.inOut' }, 0)
       .call(
         () => {

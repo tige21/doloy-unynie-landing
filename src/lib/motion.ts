@@ -20,7 +20,7 @@ export function initMotion(): void {
   }
 
   lenis = new Lenis({
-    duration: 1.1,
+    duration: 0.85,
     smoothWheel: true,
     syncTouch: false, // на таче — нативная инерция
   });
@@ -32,6 +32,16 @@ export function initMotion(): void {
   gsap.ticker.lagSmoothing(0);
 
   dbg('scroll', 'motion: lenis + scrolltrigger готовы');
+
+  // [FIX] контроль плотности: полная высота страницы после раскладки
+  requestAnimationFrame(() => {
+    dbg(
+      'scroll',
+      '[FIX] page height',
+      document.body.scrollHeight,
+      `(${(document.body.scrollHeight / innerHeight).toFixed(1)} экранов)`,
+    );
+  });
 }
 
 export function getLenis(): Lenis | null {

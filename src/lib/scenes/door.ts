@@ -23,7 +23,7 @@ export function initDoorScene(): void {
   gsap.set(crowd.querySelector('img'), { scale: 1.28 });
   gsap.set(caption, { autoAlpha: 0, y: 36 });
 
-  pinScene(scene, 1.8, (tl) => {
+  pinScene(scene, 1.1, (tl) => {
     tl.fromTo(stamp, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0)
       // «пролетаем сквозь» двоих: фрагмент растёт и растворяется
       .to(first, { scale: 2.1, autoAlpha: 0, duration: 1.6, ease: 'power2.in' }, 0.5)

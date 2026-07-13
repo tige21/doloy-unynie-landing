@@ -44,7 +44,7 @@ export function initPrologue(): void {
   gsap.set(steps[0], { autoAlpha: 1, y: 0 });
   gsap.set([steps[1], steps[2]], { autoAlpha: 0, y: 60 });
 
-  pinScene(scene, 2.5, (tl) => {
+  pinScene(scene, 1.4, (tl) => {
     tl.to(steps[0], { autoAlpha: 0, y: -60, duration: 1 }, 1)
       .fromTo(
         steps[1],

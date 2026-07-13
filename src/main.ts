@@ -8,6 +8,7 @@ import '@fontsource-variable/unbounded/index.css';
 import './styles/tokens.css';
 import './styles/typography.css';
 import './styles/base.css';
+import './styles/header.css';
 import './styles/scenes/scene0.css';
 import './styles/scenes/scene1.css';
 import './styles/scenes/scene2.css';
@@ -37,9 +38,11 @@ import { initMarquees } from './lib/marquee';
 import { initBuildup } from './lib/scenes/buildup';
 import { initScreamGrowth } from './lib/scenes/scream';
 import { initFinale } from './lib/scenes/finale';
+import { initHeader } from './lib/header';
 
 restoreState();
 initMotion();
+initHeader();
 initSoundConsent();
 if (prefersReducedMotion()) {
   initStateTriggers(); // статика: рассвет по IO

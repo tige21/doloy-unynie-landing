@@ -15,7 +15,7 @@
 }
 
 .s3-rules-wrap {
-  margin-block-start: calc(var(--takt) * 5);
+  margin-block-start: calc(var(--takt) * 2);
 }
 
 /* Правила — строки разного веса, не коробки */
@@ -36,7 +36,7 @@
 }
 
 .s3-turn {
-  margin-block-start: calc(var(--takt) * 6);
+  margin-block-start: calc(var(--takt) * 3);
 }
 
 .s3-turn-title {
@@ -51,9 +51,9 @@
 /* Выпад анти-нетворкинга v2: инверсия — ночной кадр на светлом дне.
    Панч держат слова и тьма. */
 .s3-jab {
-  margin-block-start: calc(var(--takt) * 5);
+  margin-block-start: calc(var(--takt) * 2);
   margin-inline: calc(-1 * clamp(1.25rem, 4vw, 4rem));
-  padding: calc(var(--takt) * 4) clamp(1.25rem, 4vw, 4rem);
+  padding: calc(var(--takt) * 2.5) clamp(1.25rem, 4vw, 4rem);
   background: var(--night);
   color: var(--night-ink);
   display: grid;

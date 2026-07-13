@@ -15,7 +15,7 @@
 .s4-flow {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  row-gap: calc(var(--takt) * 1.5);
+  row-gap: calc(var(--takt) * 1);
   align-items: center;
 }
 

@@ -94,7 +94,7 @@
 
 .s2-small {
   max-inline-size: 44rem;
-  margin-block-start: calc(var(--takt) * 4);
+  margin-block-start: calc(var(--takt) * 2);
   margin-inline-start: auto;
   margin-inline-end: clamp(0rem, 3vw, 3rem);
 }

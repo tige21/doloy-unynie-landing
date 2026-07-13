@@ -1,0 +1,67 @@
+/* Хедер-навигация v3: минимальный, фиксированный, следует состоянию
+   страницы (чернила var(--ink) читаемы и на ночи, и на дне). */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: 0.8rem clamp(1.25rem, 4vw, 4rem);
+  background: color-mix(in srgb, var(--surface) 84%, transparent);
+  color: var(--ink);
+  transition: background-color 1.6s ease, color 1.6s ease;
+}
+
+.sh-logo {
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.sh-nav {
+  display: flex;
+  gap: clamp(0.9rem, 2vw, 1.8rem);
+  margin-inline-start: auto;
+}
+
+.sh-nav a {
+  font-family: var(--font-voice);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.sh-nav a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--scream);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.sh-cta {
+  font-family: var(--font-voice);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--scream);
+  color: var(--graphite);
+  padding: 0.5em 0.9em;
+  box-shadow: var(--paper-shadow);
+}
+
+@media (max-width: 760px) {
+  .sh-nav {
+    display: none; /* мобайл: словотип + «Записаться» */
+  }
+
+  .sh-cta {
+    margin-inline-start: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header {
+    transition: none;
+  }
+}

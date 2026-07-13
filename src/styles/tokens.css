@@ -27,8 +27,8 @@
   /* --- Паузы (REDESIGN-NOTES: вдвое плотнее v1 — пустота была главной жалобой) --- */
   --pause-thought: calc(var(--takt) * 1); /* внутри мысли */
   --pause-idea: calc(var(--takt) * 2); /* между мыслями */
-  --pause-scene: calc(var(--takt) * 5); /* между сценами */
-  --pause-scene-quiet: calc(var(--takt) * 7); /* в тихих сценах */
+  --pause-scene: calc(var(--takt) * 3); /* между сценами */
+  --pause-scene-quiet: calc(var(--takt) * 4); /* в тихих сценах */
 
   /* --- Бумажная тень: единственная тень системы (DL 6.3) --- */
   --paper-shadow:

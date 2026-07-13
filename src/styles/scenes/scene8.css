@@ -2,7 +2,7 @@
    Шаги — строки анкеты, не коробки (DL 13). Кнопка — наклейка-дверь (DL 10). */
 
 .scene-8 {
-  padding-block: calc(var(--takt) * 8);
+  padding-block: calc(var(--takt) * 4);
 }
 
 .s8-when {
@@ -34,7 +34,7 @@
 
 /* Проводник */
 .s8-steps {
-  margin-block-start: calc(var(--takt) * 6);
+  margin-block-start: calc(var(--takt) * 2);
   max-inline-size: 44rem;
 }
 
@@ -65,8 +65,8 @@
 }
 
 .s8-door {
-  margin-block-start: calc(var(--takt) * 3);
-  max-inline-size: 26rem;
+  margin-block-start: calc(var(--takt) * 2);
+  max-inline-size: 20rem;
   margin-inline-start: 3em; /* прижата к шагам — часть проводника */
 }
 
@@ -76,7 +76,7 @@
 
 /* Дверь: эхо + кнопка */
 .s8-go {
-  margin-block-start: calc(var(--takt) * 6);
+  margin-block-start: calc(var(--takt) * 2);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: calc(var(--takt) * 2);
@@ -149,11 +149,11 @@
 
 /* Сцена 9 «Титр» — рифма к прологу в дневном свете */
 .scene-9 {
-  min-height: 70svh;
+  min-height: 50svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: calc(var(--takt) * 3);
+  gap: calc(var(--takt) * 2);
 }
 
 .s9-title {
