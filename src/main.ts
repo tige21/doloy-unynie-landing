@@ -21,18 +21,20 @@ import { dbg, debugEnabled } from './lib/debug';
 import { initSoundConsent } from './lib/sound-consent';
 import { restoreState } from './lib/state';
 import {
-  initBreathing,
+  initReveals,
   initStateTriggers,
   prefersReducedMotion,
 } from './lib/choreography';
+import { initMotion } from './lib/motion';
 
 import { initClimax, initEchoCycle, initPopLoop } from './lib/climax';
 import { initLoadingOrder } from './lib/degradation';
 
 restoreState();
+initMotion();
 initSoundConsent();
 initStateTriggers();
-if (!prefersReducedMotion()) initBreathing();
+if (!prefersReducedMotion()) initReveals();
 initClimax();
 initEchoCycle();
 initPopLoop();

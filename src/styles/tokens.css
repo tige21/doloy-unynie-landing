@@ -5,10 +5,12 @@
    ============================================================ */
 
 :root {
-  /* --- Палитра (DL 3.2, калибровочные значения) --- */
+  /* --- Палитра (DL 3.2 + REDESIGN-NOTES: ночной пролог) --- */
   --paper: #f4f1ea; /* БУМАГА — поверхность дня */
-  --morning: #d9d6d0; /* СЕРОЕ УТРО — поверхность пролога, тёплый серый */
-  --morning-deep: #cbc8c1; /* ступень серого утра для акцентов пролога */
+  --night: #141311; /* НОЧЬ — поверхность пролога v2: глубокий тёплый графит */
+  --night-ink: #ede9e1; /* чернила на ночи */
+  --morning: #d9d6d0; /* legacy-ступень (точечные применения) */
+  --morning-deep: #cbc8c1;
   --graphite: #2a2825; /* ГРАФИТ — текст и линии; чистый #000 запрещён */
   --scream: #ff5a1e; /* КРИК — оранжевый событий; фоном больших поверхностей не бывает */
   --scream-ink: #fff6ef; /* текст на крике (калибровано под контраст) */
@@ -22,11 +24,11 @@
   --voice-leading: 1.6;
   --takt: calc(var(--voice-size) * var(--voice-leading));
 
-  /* --- Паузы (кратны такту; пропорции DL 5.2) --- */
+  /* --- Паузы (REDESIGN-NOTES: вдвое плотнее v1 — пустота была главной жалобой) --- */
   --pause-thought: calc(var(--takt) * 1); /* внутри мысли */
-  --pause-idea: calc(var(--takt) * 3); /* между мыслями */
-  --pause-scene: calc(var(--takt) * 10); /* между сценами */
-  --pause-scene-quiet: calc(var(--takt) * 14); /* в тихих сценах больше */
+  --pause-idea: calc(var(--takt) * 2); /* между мыслями */
+  --pause-scene: calc(var(--takt) * 5); /* между сценами */
+  --pause-scene-quiet: calc(var(--takt) * 7); /* в тихих сценах */
 
   /* --- Бумажная тень: единственная тень системы (DL 6.3) --- */
   --paper-shadow:
@@ -41,21 +43,24 @@
   --font-voice: 'Golos Text', system-ui, -apple-system, sans-serif;
 
   /* --- Поверхность/чернила текущего состояния страницы --- */
-  --surface: var(--morning);
-  --ink: var(--graphite);
+  --surface: var(--night);
+  --ink: var(--night-ink);
 }
 
-/* --- Три состояния страницы (DL 3.3). Переход morning→day→after
-       управляется хореографией; направление необратимо в сеансе. --- */
-html[data-state='morning'] {
-  --surface: var(--morning);
+/* --- Три состояния страницы (v2): night→day→after.
+       Направление необратимо в сеансе; лерп цвета — в шейдере атмосферы. --- */
+html[data-state='night'] {
+  --surface: var(--night);
+  --ink: var(--night-ink);
 }
 
 html[data-state='day'] {
   --surface: var(--paper);
+  --ink: var(--graphite);
 }
 
-/* После крика мир чуть теплее дня — серость не вернётся никогда */
+/* После крика мир чуть теплее дня — тьма не вернётся никогда */
 html[data-state='after'] {
   --surface: color-mix(in srgb, var(--paper) 94%, var(--pop-yellow));
+  --ink: var(--graphite);
 }

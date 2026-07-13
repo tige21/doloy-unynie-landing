@@ -1,18 +1,18 @@
 import { dbg } from './debug';
 
 /**
- * Три состояния страницы (DL 3.3): morning → day → after.
- * Направление необратимо в рамках сеанса — серость после крика
+ * Три состояния страницы (v2, REDESIGN-NOTES): night → day → after.
+ * Направление необратимо в рамках сеанса — тьма после крика
  * не возвращается никогда (AD, закон 4).
  */
 
-const ORDER = ['morning', 'day', 'after'] as const;
+const ORDER = ['night', 'day', 'after'] as const;
 export type PageState = (typeof ORDER)[number];
 
 const AFTER_KEY = 'du-state-after';
 
 export function getState(): PageState {
-  return (document.documentElement.dataset.state as PageState) ?? 'morning';
+  return (document.documentElement.dataset.state as PageState) ?? 'night';
 }
 
 export function advanceState(next: PageState): void {

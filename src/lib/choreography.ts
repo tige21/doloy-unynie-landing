@@ -2,33 +2,20 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { dbg } from './debug';
 import { advanceState } from './state';
+import { splitText } from './split';
 
 /**
- * Хореография скролла (AD раздел 7):
- * — движение = дыхание: появления в ответ на скролл, ничего автономного;
- * — вес анимаций убывает по фильму (утро тяжёлое → после крика невесомое);
- * — скролл никогда не блокируется (никаких pin/scrub-захватов);
- * — бюджет резкости не тратится: все появления мягкие (удары — в climax.ts).
+ * Хореография v2 (REDESIGN-NOTES): моушн — часть зрелища.
+ * Построчные/посимвольные реверлы с масками, заметные входы блоков.
+ * Pinned-сцены (0-1, 2, 5) ставятся собственными таймлайнами в scenes/*.
  */
 
 export const prefersReducedMotion = (): boolean =>
   matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/** Вес дыхания по сценам: смещение (px) и длительность (с). */
-const BREATH: Record<string, { y: number; dur: number }> = {
-  '0': { y: 28, dur: 1.6 }, // серое утро — самое тяжёлое движение фильма
-  '1': { y: 26, dur: 1.5 },
-  '2': { y: 20, dur: 1.0 },
-  '3': { y: 18, dur: 0.9 },
-  '4': { y: 14, dur: 0.55 }, // разгон — лёгкое и быстрое
-  '4b': { y: 10, dur: 1.2 }, // вдох: медленное появление единственной реплики
-  '6': { y: 8, dur: 0.5 }, // после крика — невесомость
-  '7': { y: 8, dur: 0.5 },
-  '8': { y: 8, dur: 0.5 },
-  '9': { y: 6, dur: 0.6 },
-};
+/** Сцены с генерик-реверлами (pinned-сцены исключены — у них свои таймлайны) */
+const REVEAL_SCENES = new Set(['3', '4', '4b', '6', '7', '8', '9']);
 
-/** Верхнеуровневые блоки сцены (spread раскрывается в детей). */
 function blocksOf(scene: HTMLElement): HTMLElement[] {
   const out: HTMLElement[] = [];
   for (const child of Array.from(scene.children) as HTMLElement[]) {
@@ -50,7 +37,7 @@ export function initStateTriggers(): void {
     (entries) => {
       for (const e of entries) {
         if (!e.isIntersecting) continue;
-        // Поворот исповеди: рассвет — morning → day (AD, сцена 1)
+        // Поворот исповеди: рассвет — night → day (AD, сцена 1)
         advanceState('day');
         turn.querySelector('.s1-drop')?.classList.add('is-lit');
         dbg('scroll', 'confession turn: dawn');
@@ -62,30 +49,52 @@ export function initStateTriggers(): void {
   io.observe(turn);
 }
 
-/** Дыхательные появления. Вызывается только без reduce-motion. */
-export function initBreathing(): void {
+/** Посимвольный подъём дисплейного заголовка. */
+export function titleReveal(el: HTMLElement, trigger?: HTMLElement): void {
+  const chars = splitText(el, 'chars');
+  if (chars.length === 0) return;
+  gsap.from(chars, {
+    yPercent: 110,
+    rotate: 4,
+    duration: 0.7,
+    ease: 'power3.out',
+    stagger: 0.022,
+    scrollTrigger: {
+      trigger: trigger ?? el,
+      start: 'top 82%',
+      once: true,
+      onEnter: () => dbg('scroll', 'title reveal', el.className),
+    },
+  });
+}
+
+/** Заметные реверлы блоков нефиксированных сцен. */
+export function initReveals(): void {
   gsap.registerPlugin(ScrollTrigger);
 
   document.querySelectorAll<HTMLElement>('.scene').forEach((scene) => {
     const id = scene.dataset.scene ?? '';
-    const conf = BREATH[id];
-    if (!conf) return; // сцена 5 дышит по собственной партитуре (climax.ts)
+    if (!REVEAL_SCENES.has(id)) return;
 
     for (const block of blocksOf(scene)) {
+      if (block.classList.contains('t-title')) continue; // титры — посимвольно
       gsap.from(block, {
         autoAlpha: 0,
-        y: conf.y,
-        duration: conf.dur,
-        ease: 'power2.out',
+        y: 56,
+        clipPath: 'inset(0% 0% 32% 0%)',
+        duration: 0.9,
+        ease: 'power3.out',
         scrollTrigger: {
           trigger: block,
-          start: 'top 88%',
-          once: true, // появление честное и однократное — без «подпрыгиваний»
-          onEnter: () => dbg('scroll', `breath scene=${id}`, block.className),
+          start: 'top 86%',
+          once: true,
+          onEnter: () => dbg('scroll', `reveal scene=${id}`, block.className),
         },
       });
     }
+
+    scene.querySelectorAll<HTMLElement>('.t-title').forEach((t) => titleReveal(t));
   });
 
-  dbg('scroll', 'breathing initialized');
+  dbg('scroll', 'reveals initialized');
 }

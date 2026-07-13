@@ -95,6 +95,48 @@
   text-transform: uppercase;
 }
 
+/* Единицы кинетической типографики: спаны сплиттера */
+.split-unit {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Титры реверлятся из-под маски строки */
+.t-title,
+.t-line {
+  overflow: hidden;
+}
+
+/* Контурная типографика v2: гигантские фоновые слова (REDESIGN-NOTES) */
+.t-outline {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--ink) 28%, transparent);
+  line-height: 0.92;
+  user-select: none;
+}
+
+/* Бегущая строка v2 */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+}
+
+.marquee-track {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.6em;
+  padding-inline-end: 0.6em;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(1.5rem, 1rem + 2.6vw, 3rem);
+  will-change: transform;
+}
+
 /* Маркерное подчёркивание ключевого слова — рукописный слой.
    TODO: заменить кривую сканом настоящего маркера (DL 9.3) */
 .mk {
