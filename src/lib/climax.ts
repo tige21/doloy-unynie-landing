@@ -21,7 +21,7 @@ const RELEASE = 5.0;
 type WaveFn = (n: 1 | 2) => void;
 
 /** CSS-вспышка волны; WebGL-слой может подменить через setWaveImpl. */
-let waveImpl: WaveFn = (n) => {
+const cssWave: WaveFn = (n) => {
   const el = document.createElement('div');
   el.className = 'strike-wave';
   el.setAttribute('aria-hidden', 'true');
@@ -31,8 +31,15 @@ let waveImpl: WaveFn = (n) => {
   dbg('climax', `wave ${n} (css fallback)`);
 };
 
+let waveImpl: WaveFn = cssWave;
+
 export function setWaveImpl(fn: WaveFn): void {
   waveImpl = fn;
+}
+
+/** Возврат CSS-волны при самоотключении WebGL-слоя. */
+export function resetWaveImpl(): void {
+  waveImpl = cssWave;
 }
 
 function strike(n: 1 | 2): void {

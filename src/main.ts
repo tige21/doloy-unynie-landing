@@ -38,6 +38,26 @@ initEchoCycle();
 initPopLoop();
 initLoadingOrder();
 
+/* WebGL — только при явных признаках «потянет» (DL 15.3: право на отказ).
+   Отдельный чанк: при отказе не грузится ни байта. */
+type NavigatorHints = Navigator & {
+  deviceMemory?: number;
+  connection?: { saveData?: boolean };
+};
+const nav = navigator as NavigatorHints;
+const webglAllowed =
+  !prefersReducedMotion() &&
+  !nav.connection?.saveData &&
+  (nav.deviceMemory ?? 8) >= 4;
+
+if (webglAllowed) {
+  import('./lib/webgl/air')
+    .then((m) => m.initAir())
+    .catch((e) => dbg('webgl', 'chunk load failed (остаёмся на CSS):', e));
+} else {
+  dbg('webgl', 'отказ по бюджету устройства/настройкам');
+}
+
 dbg('state', 'init', {
   state: document.documentElement.dataset.state,
   viewport: `${innerWidth}x${innerHeight}`,

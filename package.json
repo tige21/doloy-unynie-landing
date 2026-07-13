@@ -12,11 +12,9 @@
   "dependencies": {
     "@fontsource-variable/unbounded": "^5.2.8",
     "@fontsource/golos-text": "^5.2.8",
-    "gsap": "^3.15.0",
-    "three": "^0.185.1"
+    "gsap": "^3.15.0"
   },
   "devDependencies": {
-    "@types/three": "^0.185.1",
     "typescript": "^7.0.2",
     "vite": "^8.1.4"
   }
