@@ -41,13 +41,15 @@
 /* Герой виден с первого кадра: LCP мгновенный, своп исключён
    font-display: optional; интро двигает transform-ом, не прозрачностью */
 
-/* Мобайл: контурное слово по центру, целиком в кадре (не обрезается) */
+/* Мобайл: контурное слово по центру, целиком в кадре.
+   [FIX] центрирование БЕЗ transform — GSAP-интро анимирует transform
+   и затирал translateX(50%), слово уезжало вправо (повторный баг) */
 @media (max-width: 700px) {
   .s0-bg {
-    right: 50%;
-    transform: translateX(50%);
+    left: 0;
+    right: 0;
     bottom: -0.08em;
-    font-size: 20.5vw;
+    font-size: 19vw;
     text-align: center;
   }
 }

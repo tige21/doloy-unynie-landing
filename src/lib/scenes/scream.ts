@@ -22,7 +22,12 @@ export function initScreamGrowth(): void {
 
   const words = scene.querySelectorAll<HTMLElement>('.s5-word');
 
-  const tl = pinScene(scene, 1.1, (t) => {
+  // [FIX] pin крика удлинён 1.1 → 1.9 vh: событие фильма проживается,
+  // а не проскакивает за один свайп (фидбек «очень резко пролистывается»)
+  const PIN_LENGTH = 1.9;
+  dbg('climax', '[FIX] scream pin length', PIN_LENGTH);
+
+  const tl = pinScene(scene, PIN_LENGTH, (t) => {
     t.to(video, { scale: 1, duration: 1, ease: 'power2.inOut' }, 0)
       .call(
         () => {
@@ -32,7 +37,7 @@ export function initScreamGrowth(): void {
         undefined,
         1.02,
       )
-      .to({}, { duration: 0.9 }); // держим кадр: крик играет в реальном времени
+      .to({}, { duration: 1.6 }); // держим кадр: крик играет в реальном времени
   });
 
   // Слова paper-цвета невидимы на светлой странице при неполном кадре —
