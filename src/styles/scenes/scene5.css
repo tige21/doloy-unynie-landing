@@ -19,7 +19,8 @@
   width: 100%;
 }
 
-/* Слова крика: до удара не существуют */
+/* Слова крика: до удара не существуют. Появление — жёсткий кат без
+   transition (единственная резкость фильма, AD 7.4) */
 .s5-word {
   opacity: 0;
   text-align: center;
@@ -28,6 +29,43 @@
 
 .s5-word.is-struck {
   opacity: 1;
+}
+
+/* Спад после второго пика: первое мягкое движение — слова отпускают масштаб */
+.s5-word.is-released {
+  transform: scale(0.96);
+  transition: transform 1.4s ease;
+}
+
+/* CSS-fallback волны удара: короткий тёплый фронт от центра
+   (живой WebGL-фронт заменяет это в webgl/wave.ts) */
+.strike-wave {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: var(--scream);
+  opacity: 0;
+  z-index: 60;
+}
+
+.strike-wave.is-running {
+  animation: strike-wave 0.7s ease-out forwards;
+}
+
+@keyframes strike-wave {
+  0% {
+    clip-path: circle(0% at 50% 55%);
+    opacity: 0.18;
+  }
+
+  70% {
+    opacity: 0.1;
+  }
+
+  100% {
+    clip-path: circle(140% at 50% 55%);
+    opacity: 0;
+  }
 }
 
 /* Десктоп: видео — весь кадр, фраза собирается поверх */

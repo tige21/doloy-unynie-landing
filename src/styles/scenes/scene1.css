@@ -18,7 +18,17 @@
 }
 
 /* Капля КРИКА: первая краска фильма (DL 3.3, сцена 1) —
-   площадь «капли»: одна фраза, не плашка */
+   цвет не вспыхивает, а проступает (AD, сцена 1) */
 .s1-drop {
+  transition: color 2.4s ease;
+}
+
+.s1-drop.is-lit {
   color: var(--scream);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .s1-drop {
+    transition: none;
+  }
 }

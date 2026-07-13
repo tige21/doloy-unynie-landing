@@ -51,7 +51,11 @@ html[data-state='morning'] {
   --surface: var(--morning);
 }
 
-html[data-state='day'],
-html[data-state='after'] {
+html[data-state='day'] {
   --surface: var(--paper);
+}
+
+/* После крика мир чуть теплее дня — серость не вернётся никогда */
+html[data-state='after'] {
+  --surface: color-mix(in srgb, var(--paper) 94%, var(--pop-yellow));
 }

@@ -19,8 +19,24 @@ import './styles/scenes/scene7.css';
 import './styles/scenes/scene8.css';
 import { dbg, debugEnabled } from './lib/debug';
 import { initSoundConsent } from './lib/sound-consent';
+import { restoreState } from './lib/state';
+import {
+  initBreathing,
+  initStateTriggers,
+  prefersReducedMotion,
+} from './lib/choreography';
 
+import { initClimax, initEchoCycle, initPopLoop } from './lib/climax';
+import { initLoadingOrder } from './lib/degradation';
+
+restoreState();
 initSoundConsent();
+initStateTriggers();
+if (!prefersReducedMotion()) initBreathing();
+initClimax();
+initEchoCycle();
+initPopLoop();
+initLoadingOrder();
 
 dbg('state', 'init', {
   state: document.documentElement.dataset.state,

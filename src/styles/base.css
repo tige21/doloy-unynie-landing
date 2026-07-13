@@ -29,10 +29,14 @@ body {
   overflow-x: hidden;
 }
 
+/* Reduce-motion: статичная постановка полноценна (DL 18.6, AD 10.14).
+   Смены состояний — монтажной склейкой, вся хореография выключена. */
 @media (prefers-reduced-motion: reduce) {
-  html,
-  body {
-    transition: none; /* смена состояний — катом (DL 18.6) */
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
   }
 }
 
@@ -98,4 +102,17 @@ a {
   box-shadow: var(--paper-shadow);
   outline: 6px solid #fff;
   transform: rotate(var(--tilt));
+}
+
+/* Микроотклик «непрочно приклеена» — миллиметры, только точный указатель
+   (AD 7: единственная игрушка системы) */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .sticker {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .sticker:hover {
+    transform: rotate(var(--tilt)) translate(1px, -3px);
+    box-shadow: var(--paper-shadow-lifted);
+  }
 }

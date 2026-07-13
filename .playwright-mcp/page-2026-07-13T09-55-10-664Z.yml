@@ -1,0 +1,18 @@
+- main [ref=f12e2]:
+  - region "Серое утро" [ref=f12e3]:
+    - paragraph [ref=f12e4]: долой уныние
+    - heading "Воскресенье, 12:40. Можно остаться дома. Как обычно." [level=1] [ref=f12e5]
+  - region "Исповедь" [ref=f12e6]
+  - region "Дверь открыта" [ref=f12e7]
+  - region "Ты в команде" [ref=f12e10]
+  - region "Разгон" [ref=f12e13]
+  - region "Вдох" [ref=f12e14]
+  - region "Крик" [ref=f12e15]:
+    - generic [ref=f12e16]:
+      - paragraph [ref=f12e17]: долой
+      - paragraph [ref=f12e19]: уныние!
+    - paragraph [ref=f12e20]: "Видео: тридцать человек в летнем парке по команде «три-четыре» хором кричат «Долой уныние!» и вскидывают руки."
+  - region "Выдох" [ref=f12e21]
+  - region "Автор" [ref=f12e23]
+  - region "Твоё воскресенье" [ref=f12e26]
+  - region "Титр" [ref=f12e28]
