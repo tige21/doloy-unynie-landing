@@ -9,7 +9,8 @@
   align-items: center;
   gap: clamp(1rem, 3vw, 2.5rem);
   padding: 0.8rem clamp(1.25rem, 4vw, 4rem);
-  background: color-mix(in srgb, var(--surface) 84%, transparent);
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
   color: var(--ink);
   transition: background-color 1.6s ease, color 1.6s ease;
 }

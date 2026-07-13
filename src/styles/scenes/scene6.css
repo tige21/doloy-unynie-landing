@@ -4,7 +4,7 @@
 /* Поп-фон сцены — исключение с паспортом (DL 6.2): наследует видео-3,
    к краям возвращается в поверхность страницы (бумага остаётся базой) */
 .scene-6 {
-  padding-block: calc(var(--takt) * 4);
+  padding-block: var(--pause-scene-lg);
   background: linear-gradient(
     175deg,
     var(--surface) 0%,

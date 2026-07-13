@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { dbg } from '../debug';
-import { boostGrain } from '../webgl/atmosphere';
+import { boostGrain } from '../grain';
 
 /**
  * Сцены 4–4½ v2 «Разгон»: таймкод листает минуты 15:50→15:59 по

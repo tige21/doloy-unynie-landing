@@ -2,7 +2,7 @@
    Шаги — строки анкеты, не коробки (DL 13). Кнопка — наклейка-дверь (DL 10). */
 
 .scene-8 {
-  padding-block: calc(var(--takt) * 4);
+  padding-block: var(--pause-scene-lg);
 }
 
 .s8-when {

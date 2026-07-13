@@ -29,6 +29,7 @@
   --pause-idea: calc(var(--takt) * 2); /* между мыслями */
   --pause-scene: calc(var(--takt) * 3); /* между сценами */
   --pause-scene-quiet: calc(var(--takt) * 4); /* в тихих сценах */
+  --pause-scene-lg: calc(var(--takt) * 4); /* насыщенные сцены (6-8) */
 
   /* --- Бумажная тень: единственная тень системы (DL 6.3) --- */
   --paper-shadow:
@@ -49,6 +50,15 @@
 
 /* --- Три состояния страницы (v2): night→day→after.
        Направление необратимо в сеансе; лерп цвета — в шейдере атмосферы. --- */
+/* Мобайл плотнее: экраны меньше — паузы меньше */
+@media (max-width: 700px) {
+  :root {
+    --pause-scene: calc(var(--takt) * 2);
+    --pause-scene-quiet: calc(var(--takt) * 2.5);
+    --pause-scene-lg: calc(var(--takt) * 2);
+  }
+}
+
 html[data-state='night'] {
   --surface: var(--night);
   --ink: var(--night-ink);

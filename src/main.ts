@@ -1,10 +1,4 @@
-import '@fontsource/golos-text/cyrillic-400.css';
-import '@fontsource/golos-text/cyrillic-500.css';
-import '@fontsource/golos-text/cyrillic-600.css';
-import '@fontsource/golos-text/400.css';
-import '@fontsource/golos-text/500.css';
-import '@fontsource/golos-text/600.css';
-import '@fontsource-variable/unbounded/index.css';
+import './styles/fonts.css';
 import './styles/tokens.css';
 import './styles/typography.css';
 import './styles/base.css';
@@ -87,13 +81,22 @@ const webglAllowed =
   (nav.deviceMemory ?? 8) >= 4;
 
 if (webglAllowed) {
-  import('./lib/webgl/atmosphere')
-    .then(async (m) => {
-      m.initAtmosphere();
-      const photos = await import('./lib/webgl/photos');
-      photos.initPhotoPlanes();
-    })
-    .catch((e) => dbg('webgl', 'chunk load failed (остаёмся на CSS):', e));
+  // Отложенная загрузка three-чанка: не конкурирует с первым экраном
+  // (TBT/Speed Index), атмосфера догоняет за ~1с после простоя
+  const loadWebgl = (): void => {
+    import('./lib/webgl/atmosphere')
+      .then(async (m) => {
+        m.initAtmosphere();
+        const photos = await import('./lib/webgl/photos');
+        photos.initPhotoPlanes();
+      })
+      .catch((e) => dbg('webgl', 'chunk load failed (остаёмся на CSS):', e));
+  };
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadWebgl, { timeout: 1500 });
+  } else {
+    setTimeout(loadWebgl, 400);
+  }
 } else {
   dbg('webgl', 'отказ по бюджету устройства/настройкам');
 }

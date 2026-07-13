@@ -22,12 +22,7 @@
   z-index: 0;
 }
 
-.s0-whisper {
-  position: relative;
-  z-index: 1;
-  margin-block-end: calc(var(--takt) * 3);
-  margin-inline-start: clamp(0rem, 4vw, 4rem);
-}
+/* Шёпот сцены удалён: роль первой точки «шёпот→крик» несёт лого хедера */
 
 .s0-line {
   position: relative;
@@ -41,4 +36,18 @@
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
+}
+
+/* Герой виден с первого кадра: LCP мгновенный, своп исключён
+   font-display: optional; интро двигает transform-ом, не прозрачностью */
+
+/* Мобайл: контурное слово по центру, целиком в кадре (не обрезается) */
+@media (max-width: 700px) {
+  .s0-bg {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: -0.08em;
+    font-size: 20.5vw;
+    text-align: center;
+  }
 }

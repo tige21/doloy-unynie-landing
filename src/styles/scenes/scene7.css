@@ -2,7 +2,7 @@
    и три пары «вопрос-ответ» без аккордеона (DL 17). */
 
 .scene-7 {
-  padding-block: calc(var(--takt) * 4);
+  padding-block: var(--pause-scene-lg);
 }
 
 .s7-grid {

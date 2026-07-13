@@ -11,6 +11,7 @@ import {
 import { gsap } from 'gsap';
 import { dbg } from '../debug';
 import { resetWaveImpl, setWaveImpl } from '../climax';
+import { setGrainImpl } from '../grain';
 import { prefersReducedMotion } from '../choreography';
 
 /**
@@ -189,10 +190,10 @@ export function initAtmosphere(): void {
     dbg('webgl', `волна ${n} (шейдер)`);
   });
 
-  /** Пульс зерна извне (вдох, разгон). */
-  boostGrain = (amt: number, dur: number): void => {
+  // Пульс зерна извне (вдох, разгон) — через лёгкий мост grain.ts
+  setGrainImpl((amt, dur) => {
     gsap.fromTo(uniforms.uGrainBoost, { value: amt }, { value: 0, duration: dur });
-  };
+  });
 
   const frameCbs: Array<(dt: number) => void> = [];
 
@@ -257,5 +258,3 @@ export function initAtmosphere(): void {
   dbg('webgl', 'атмосфера включена', { dpr });
 }
 
-/** Пульс зерна (no-op до инициализации). */
-export let boostGrain: (amt: number, dur: number) => void = () => {};

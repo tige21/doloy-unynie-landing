@@ -9,6 +9,11 @@
       content="Раз в две недели тридцать человек собираются в Петербурге, чтобы вместе создавать, выступать командами и хором кричать «Долой уныние». Бесплатно. Воскресенье, 13:00."
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>document.documentElement.classList.add('js');</script>
+    <!-- Критичные шрифты первого экрана: мгновенный текст без FOUT-скачка -->
+    <link rel="preload" href="/fonts/unbounded-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/golos-text-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/golos-text-cyrillic-600-normal.woff2" as="font" type="font/woff2" crossorigin />
     <meta name="theme-color" content="#f4f1ea" />
     <!-- TODO: заменить на боевой домен перед релизом -->
     <meta property="og:type" content="website" />
@@ -37,7 +42,6 @@
       <!-- Сцена 0 «Серое утро»: тишина, ни одного изображения (DL 17) -->
       <section class="scene scene-0" id="scene-0" data-scene="0" aria-label="Ночь. Пролог">
         <p class="t-outline s0-bg" aria-hidden="true">долой<br />уныние</p>
-        <p class="t-whisper s0-whisper">долой уныние</p>
         <h1 class="t-title s0-line">
           <span class="s0-row">Воскресенье, 12:40.</span><br />
           <span class="s0-row">Можно остаться дома.</span><br />

@@ -14,24 +14,27 @@ import { pinScene } from '../motion';
 export function initPrologue(): void {
   // --- Сцена 0: секвенция загрузки ---
   const bg = document.querySelector<HTMLElement>('.s0-bg');
-  const whisper = document.querySelector<HTMLElement>('.s0-whisper');
   const line = document.querySelector<HTMLElement>('.s0-line');
 
-  if (bg && whisper && line) {
-    // сплитим каждую строку отдельно — <br> между .s0-row сохраняются
-    const chars = Array.from(line.querySelectorAll<HTMLElement>('.s0-row')).flatMap(
-      (row) => splitText(row, 'chars'),
-    );
-    const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    intro
-      .from(bg, { autoAlpha: 0, y: 60, duration: 1.6, ease: 'power2.out' })
-      .from(whisper, { autoAlpha: 0, duration: 0.9 }, 0.4)
-      .from(
-        chars,
-        { yPercent: 115, rotate: 3, duration: 0.8, stagger: 0.02 },
-        0.55,
-      );
-    dbg('scroll', 'prologue: load sequence started');
+  if (bg && line) {
+    // Интро ждёт готовности шрифтов: сплит по финальным метрикам,
+    // ноль CLS от свопа на герое (замер Lighthouse)
+    void document.fonts.ready.then(() => {
+      // сплитим каждую строку отдельно — <br> между .s0-row сохраняются
+      const chars = Array.from(
+        line.querySelectorAll<HTMLElement>('.s0-row'),
+      ).flatMap((row) => splitText(row, 'chars'));
+      const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      intro
+        // только transform: paint контура не откладывается (LCP ранний)
+        .from(bg, { y: 90, duration: 1.6, ease: 'power2.out' })
+        .from(
+          chars,
+          { yPercent: 115, rotate: 3, duration: 0.8, stagger: 0.02 },
+          0.35,
+        );
+      dbg('scroll', 'prologue: load sequence started (fonts ready)');
+    });
   }
 
   // --- Сцена 1: pinned-исповедь ---
