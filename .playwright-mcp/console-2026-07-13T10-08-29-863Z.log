@@ -60,3 +60,9 @@
 [ 6905727ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
 [ 6905888ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
 [ 6958743ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 7294901ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5199/@vite/client:992
+[ 8145981ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/assets/index-D0N4nHzk.js:0
+[ 8146194ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/assets/index-D0N4nHzk.js:0
+[ 8228479ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/assets/index-D0N4nHzk.js:0
+[ 8228613ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/assets/index-D0N4nHzk.js:0
+[ 8399319ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/assets/index-D0N4nHzk.js:0
