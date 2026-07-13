@@ -163,3 +163,13 @@
 .s9-links {
   color: color-mix(in srgb, var(--ink) 75%, var(--surface));
 }
+
+/* Титровая лента: контурный шёпот, ставший бесконечным */
+.s9-marquee {
+  margin-inline: calc(-1 * clamp(1.25rem, 4vw, 4rem));
+}
+
+.s9-marquee .marquee-track {
+  font-size: clamp(3rem, 8vw, 7rem);
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--ink) 32%, transparent);
+}

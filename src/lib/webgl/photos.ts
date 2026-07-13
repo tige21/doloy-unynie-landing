@@ -35,10 +35,10 @@ void main() {
   uv.x += w;
   // RGB-shift: скорость + hover
   float shift = 0.006 * uVel + 0.008 * uHover;
+  vec4 c = texture2D(uMap, uv);
   float r = texture2D(uMap, uv + vec2(shift, 0.0)).r;
-  float g = texture2D(uMap, uv).g;
   float b = texture2D(uMap, uv - vec2(shift, 0.0)).b;
-  gl_FragColor = vec4(r, g, b, 1.0);
+  gl_FragColor = vec4(r, c.g, b, c.a); // alpha сохраняем: PNG-фигуры прозрачны
 }
 `;
 
@@ -90,6 +90,7 @@ export function initPhotoPlanes(): void {
       new ShaderMaterial({
         vertexShader: VERT,
         fragmentShader: FRAG,
+        transparent: true,
         uniforms: {
           uMap: { value: tex },
           uVel: { value: 0 },

@@ -17,6 +17,7 @@ import './styles/scenes/scene5.css';
 import './styles/scenes/scene6.css';
 import './styles/scenes/scene7.css';
 import './styles/scenes/scene8.css';
+import { gsap } from 'gsap';
 import { dbg, debugEnabled } from './lib/debug';
 import { initSoundConsent } from './lib/sound-consent';
 import { restoreState } from './lib/state';
@@ -32,6 +33,10 @@ import { initLoadingOrder } from './lib/degradation';
 
 import { initPrologue } from './lib/scenes/prologue';
 import { initDoorScene } from './lib/scenes/door';
+import { initMarquees } from './lib/marquee';
+import { initBuildup } from './lib/scenes/buildup';
+import { initScreamGrowth } from './lib/scenes/scream';
+import { initFinale } from './lib/scenes/finale';
 
 restoreState();
 initMotion();
@@ -42,6 +47,24 @@ if (prefersReducedMotion()) {
   initReveals();
   initPrologue(); // pinned-исповедь зовёт рассвет из таймлайна
   initDoorScene();
+  initMarquees();
+  initBuildup();
+  initScreamGrowth(); // ДО initClimax: класс is-pinned переключает старт на ручной
+  initFinale();
+
+  // Параллакс доминанты процесса: фото «едет» медленнее скролла
+  const processImg = document.querySelector('.s3-process img');
+  if (processImg) {
+    gsap.fromTo(
+      processImg,
+      { yPercent: -6 },
+      {
+        yPercent: 6,
+        ease: 'none',
+        scrollTrigger: { trigger: '.s3-process', scrub: 0.5, start: 'top bottom', end: 'bottom top' },
+      },
+    );
+  }
 }
 initClimax();
 initEchoCycle();

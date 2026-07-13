@@ -48,17 +48,35 @@
   font-size: calc(var(--voice-size) * 1.15);
 }
 
-/* Выпад анти-нетворкинга: единственная почти лобовая постановка сцены —
-   удар держат слова (AD 3.2) */
+/* Выпад анти-нетворкинга v2: инверсия — ночной кадр на светлом дне.
+   Панч держат слова и тьма. */
 .s3-jab {
-  margin-block-start: calc(var(--takt) * 8);
+  margin-block-start: calc(var(--takt) * 5);
+  margin-inline: calc(-1 * clamp(1.25rem, 4vw, 4rem));
+  padding: calc(var(--takt) * 4) clamp(1.25rem, 4vw, 4rem);
+  background: var(--night);
+  color: var(--night-ink);
   display: grid;
   justify-items: start;
-  max-inline-size: 44rem;
+}
+
+.s3-jab-line,
+.s3-jab-punch {
+  max-inline-size: 18em;
   margin-inline: auto;
 }
 
 .s3-jab-punch {
   margin-block-start: calc(var(--takt) * 1.5);
   color: var(--scream);
+}
+
+/* Marquee-разделитель между сценами */
+.marquee-divider {
+  padding-block: calc(var(--takt) * 1.5);
+  border-block: 2px solid color-mix(in srgb, var(--ink) 18%, transparent);
+}
+
+.marquee-divider .marquee-track span {
+  padding-inline: 0.3em;
 }

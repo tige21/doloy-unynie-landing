@@ -95,6 +95,8 @@
   display: grid;
   place-content: center;
   padding-block: calc(var(--takt) * 12);
+  /* обрыв: экран темнеет на полтона — задержанное дыхание */
+  background: color-mix(in srgb, var(--surface) 90%, var(--graphite));
 }
 
 /* Приглашение звука — реплика, не иконка (AD 5.2) */

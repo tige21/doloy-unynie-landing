@@ -147,9 +147,19 @@
           <p class="t-title s3-jab-punch">Не&nbsp;надо так.</p>
         </div>
       </section>
+
+      <!-- Marquee-разделитель: лента ускоряется от скорости скролла -->
+      <div class="marquee marquee-divider" data-speed="70" data-boost="1.4" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Долой уныние</span><span>★</span><span>Воскресенье</span><span>★</span>
+          <span>13:00</span><span>★</span><span>Бесплатно</span><span>★</span>
+          <span>Долой уныние</span><span>★</span><span>Петербург</span><span>★</span>
+          <span>Все&nbsp;— спикеры</span><span>★</span><span>Бесплатно</span><span>★</span>
+        </div>
+      </div>
       <!-- Сцена 4 «Разгон»: перебивки + выкрики, плотно, без новой информации -->
       <section class="scene scene-4" id="scene-4" data-scene="4" aria-label="Разгон">
-        <p class="stamp">15:50</p>
+        <p class="stamp s4-timer" id="s4-timer">15:50</p>
         <div class="s4-flow">
           <figure class="s4-frag s4-frag-a print" style="--tilt: -1.2deg">
             <img
@@ -444,6 +454,12 @@
       <!-- Сцена 9 «Титр» — кольцо «шёпот → крик → шёпот» замыкается -->
       <section class="scene scene-9" id="scene-9" data-scene="9" aria-label="Титр">
         <p class="t-title s9-title">До&nbsp;встречи в&nbsp;воскресенье. 13:00.</p>
+        <div class="marquee s9-marquee" data-speed="30" aria-hidden="true">
+          <div class="marquee-track t-outline">
+            <span>долой уныние</span><span>★</span><span>долой уныние</span><span>★</span>
+            <span>долой уныние</span><span>★</span><span>долой уныние</span><span>★</span>
+          </div>
+        </div>
         <p class="t-whisper s9-whisper">долой уныние</p>
         <p class="t-caption s9-links">
           <a href="https://t.me/yoube_project" target="_blank" rel="noopener"

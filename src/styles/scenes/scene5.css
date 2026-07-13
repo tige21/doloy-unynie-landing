@@ -68,6 +68,11 @@
   }
 }
 
+/* Pinned-рост: стадия обрезает вылет растущего кадра */
+.scene-5.is-pinned .s5-stage {
+  overflow: hidden;
+}
+
 /* Десктоп: видео — весь кадр, фраза собирается поверх */
 @media (min-width: 701px) {
   .s5-video {

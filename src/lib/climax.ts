@@ -18,6 +18,9 @@ const STRIKE_1 = 3.4;
 const STRIKE_2 = 4.7;
 const RELEASE = 5.0;
 
+/** Ручной запуск воспроизведения (pinned-рост, v2). Присваивается в initClimax. */
+export let startClimax: (() => void) | null = null;
+
 type WaveFn = (n: 1 | 2) => void;
 
 /** CSS-вспышка волны; WebGL-слой может подменить через setWaveImpl. */
@@ -152,16 +155,23 @@ export function initClimax(): void {
 
   video.addEventListener('error', () => staticClimax('video error'), { once: true });
 
-  const io = new IntersectionObserver(
-    (es) => {
-      if (es.some((e) => e.isIntersecting)) {
-        void start();
-        io.disconnect();
-      }
-    },
-    { threshold: 0.55 },
-  );
-  io.observe(scene);
+  // v2: при pinned-росте видео (scream-growth) стартом управляет
+  // scrub-таймлайн через startClimax — авто-IO не вешаем
+  startClimax = () => void start();
+  if (scene.classList.contains('is-pinned')) {
+    dbg('climax', 'manual start mode (pinned growth)');
+  } else {
+    const io = new IntersectionObserver(
+      (es) => {
+        if (es.some((e) => e.isIntersecting)) {
+          void start();
+          io.disconnect();
+        }
+      },
+      { threshold: 0.55 },
+    );
+    io.observe(scene);
+  }
 
   // Страховка пролистывателя: кульминация настигает на любой скорости —
   // видимость ЛЮБОЙ сцены после крика гарантирует after и собранную фразу

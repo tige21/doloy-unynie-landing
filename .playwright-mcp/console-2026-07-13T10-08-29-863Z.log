@@ -32,3 +32,25 @@
 [ 6366267ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
 [ 6379035ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
 [ 6379155ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6454638ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6472445ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6476024ms] ReferenceError: gsap is not defined
+    at http://localhost:5199/src/main.ts?t=1783943785741:43:3
+[ 6488662ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6508313ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6565775ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6588673ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6589264ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6661853ms] ReferenceError: startClimax is not defined
+    at initClimax (http://localhost:5199/src/lib/climax.ts?t=1783943971531:130:14)
+    at http://localhost:5199/src/main.ts?t=1783943971531:58:1
+[ 6664001ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6685282ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6686522ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6709653ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6709793ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6774874ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6776422ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6796722ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6801823ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
+[ 6803562ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5199/@vite/client:524
