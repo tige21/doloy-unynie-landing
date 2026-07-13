@@ -101,6 +101,12 @@
   will-change: transform;
 }
 
+/* Слово не рвётся посреди при посимвольном сплите */
+.split-word-wrap {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 /* Титры реверлятся из-под маски строки */
 .t-title,
 .t-line {

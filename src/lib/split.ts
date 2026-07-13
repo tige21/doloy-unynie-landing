@@ -19,9 +19,15 @@ export function splitText(el: HTMLElement, mode: SplitMode): HTMLElement[] {
     `<span class="split-unit ${cls}" aria-hidden="true">${content}</span>`;
 
   if (mode === 'chars') {
+    // буквы группируются в nowrap-слова — иначе браузер рвёт слово посреди
     el.innerHTML = text
-      .split('')
-      .map((ch) => (ch === ' ' ? ' ' : wrap(ch, 'split-char')))
+      .split(/(\s+)/)
+      .map((tok) => {
+        if (/^\s+$/.test(tok)) return ' ';
+        if (!tok) return '';
+        const chars = tok.split('').map((ch) => wrap(ch, 'split-char')).join('');
+        return `<span class="split-word-wrap" aria-hidden="true">${chars}</span>`;
+      })
       .join('');
   } else {
     // words (и базис для lines): каждый пробельный токен — спан
