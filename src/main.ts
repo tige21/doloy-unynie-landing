@@ -53,8 +53,12 @@ const webglAllowed =
   (nav.deviceMemory ?? 8) >= 4;
 
 if (webglAllowed) {
-  import('./lib/webgl/air')
-    .then((m) => m.initAir())
+  import('./lib/webgl/atmosphere')
+    .then(async (m) => {
+      m.initAtmosphere();
+      const photos = await import('./lib/webgl/photos');
+      photos.initPhotoPlanes();
+    })
     .catch((e) => dbg('webgl', 'chunk load failed (остаёмся на CSS):', e));
 } else {
   dbg('webgl', 'отказ по бюджету устройства/настройкам');
