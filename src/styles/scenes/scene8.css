@@ -16,8 +16,12 @@
   grid-column: 1 / span 6;
 }
 
+.s8-title {
+  max-inline-size: 11em;
+}
+
 .s8-dates {
-  margin-block-start: var(--pause-thought);
+  margin-block-start: calc(var(--takt) * 1.5);
 }
 
 .s8-winter {
@@ -108,10 +112,10 @@
   background: var(--scream);
   color: var(--graphite); /* тёмный текст на крике: 4.6:1 против 2.9:1 у светлого */
   font-family: var(--font-voice);
-  font-weight: 600;
-  font-size: calc(var(--voice-size) * 1.2);
+  font-weight: 700;
+  font-size: calc(var(--voice-size) * 1.45);
   text-decoration: none;
-  padding: 0.85em 1.4em;
+  padding: 1em 1.5em;
   box-shadow: var(--paper-shadow);
   transform: rotate(-1deg);
   transition:

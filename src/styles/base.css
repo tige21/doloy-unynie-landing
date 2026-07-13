@@ -13,6 +13,9 @@
 }
 
 html {
+  /* наклонённые отпечатки легитимно выходят за край (DL 5.5) —
+     их bounding box не должен порождать горизонтальный скролл */
+  overflow-x: clip;
   background-color: var(--surface);
   /* Смена состояния — рассветный переход; хореография может ускорять.
      Необратимость направления обеспечивает src/lib (state.ts). */
@@ -114,6 +117,27 @@ a {
 .plate-cream {
   background: var(--cream);
   padding: calc(var(--takt) * 0.75) var(--takt);
+}
+
+/* Отпечаток: фотография как физическая карточка на столе —
+   белые поля фотобумаги + бумажная тень + живой наклон.
+   Для вклеек; доминанты остаются чистыми кадрами без полей. */
+.print {
+  --tilt: 1.5deg;
+  background: #fff;
+  padding: 10px 10px 12px;
+  box-shadow: var(--paper-shadow);
+  transform: rotate(var(--tilt));
+}
+
+.print > img,
+.print > video {
+  display: block;
+  width: 100%;
+}
+
+.print > figcaption {
+  padding: 0.6em 0.35em 0.1em;
 }
 
 /* Наклейка: белый контур вырезки + бумажная тень + живой наклон (DL 9.2).

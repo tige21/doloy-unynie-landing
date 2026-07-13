@@ -6,13 +6,11 @@
   padding-block-start: var(--pause-scene);
 }
 
-.s2-timecode {
-  font-size: clamp(1.1rem, 1rem + 0.8vw, 1.6rem);
-  color: color-mix(in srgb, var(--ink) 78%, var(--surface));
+.scene-2 .stamp {
   margin-block-end: calc(var(--takt) * 2);
 }
 
-/* Первое лицо — событие: вертикальный фрагмент, не на всю ширину */
+/* Первое лицо — событие: вертикальный фрагмент-отпечаток, не на всю ширину */
 .s2-first {
   max-inline-size: 26rem;
   margin-inline-start: clamp(0rem, 6vw, 7rem); /* асимметрия: сдвиг влево от центра */

@@ -39,8 +39,13 @@
   margin-block-start: calc(var(--takt) * 6);
 }
 
+.s3-turn-title {
+  max-inline-size: 12em;
+}
+
 .s3-turn-voice {
-  margin-block-start: calc(var(--takt) * 1);
+  margin-block-start: calc(var(--takt) * 1.5);
+  font-size: calc(var(--voice-size) * 1.15);
 }
 
 /* Выпад анти-нетворкинга: единственная почти лобовая постановка сцены —
@@ -55,5 +60,5 @@
 
 .s3-jab-punch {
   margin-block-start: calc(var(--takt) * 1.5);
-  font-weight: 700;
+  color: var(--scream);
 }

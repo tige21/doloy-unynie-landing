@@ -27,8 +27,12 @@
   grid-row: 1;
 }
 
+.s7-title {
+  max-inline-size: 10em;
+}
+
 .s7-bio-voice {
-  margin-block-start: var(--pause-thought);
+  margin-block-start: calc(var(--takt) * 1.5);
 }
 
 .s7-dialog {

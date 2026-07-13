@@ -16,6 +16,8 @@
 }
 
 .s0-line {
-  max-inline-size: 18em; /* строка не тянется на всю ширину — воздух справа */
+  /* локальный кегль: три строки обязаны стоять без переносов */
+  font-size: clamp(2rem, 1rem + 4vw, 4.5rem);
+  max-inline-size: 18em;
   margin-inline-start: clamp(0rem, 4vw, 4rem);
 }

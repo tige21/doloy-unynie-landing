@@ -8,8 +8,7 @@
   margin-inline: auto;
 }
 
-.s4-timecode {
-  font-size: clamp(1.1rem, 1rem + 0.8vw, 1.6rem);
+.scene-4 .stamp {
   margin-block-end: calc(var(--takt) * 1.5);
 }
 
@@ -35,7 +34,20 @@
 
 .s4-frag-b {
   grid-column: 7 / span 5;
-  transform: rotate(-1.5deg);
+}
+
+/* Выкрики — голос толпы: живые, с чередованием наклона */
+.s4-shout-a {
+  transform: rotate(-1.2deg);
+}
+
+.s4-shout-b {
+  transform: rotate(1deg);
+}
+
+.s4-shout-c {
+  transform: rotate(-0.8deg);
+  color: var(--scream);
 }
 
 .s4-shout-b {

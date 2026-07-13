@@ -57,8 +57,8 @@
       <!-- Сцена 2 «Дверь открыта»: событие «первое лицо» → толпа (приём «фрагмент→целое») -->
       <section class="scene scene-2" id="scene-2" data-scene="2" aria-label="Дверь открыта">
         <div class="spread">
-          <p class="t-timecode s2-timecode">13:00</p>
-          <figure class="s2-first">
+          <p class="stamp">13:00</p>
+          <figure class="s2-first print" style="--tilt: -1.5deg">
             <img
               src="/media/crowd-vert@800.jpg"
               alt="Несколько человек стоят близко: спокойные лица, кто-то держит табличку «Команда №1». Первые, кого встречаешь у двери."
@@ -85,7 +85,7 @@
           </figcaption>
         </figure>
         <div class="spread">
-          <figure class="s2-small">
+          <figure class="s2-small print" style="--tilt: 1.2deg">
             <img
               src="/media/small-group@800.jpg"
               srcset="/media/small-group@800.jpg 800w, /media/small-group@1600.jpg 1600w"
@@ -128,7 +128,7 @@
           </div>
         </div>
         <div class="spread s3-turn">
-          <p class="t-line">Все участники&nbsp;— спикеры.</p>
+          <h2 class="t-title s3-turn-title">Все участники&nbsp;— <em class="mk">спикеры</em>.</h2>
           <p class="t-voice s3-turn-voice">
             Выступаете всей командой, тезисы готовите на&nbsp;месте.
             Готовиться заранее не&nbsp;нужно, главное прийти.
@@ -139,14 +139,14 @@
             Типичный нетворкинг: рандомные челиксы под видом общения пытаются
             что-то друг другу продать.
           </p>
-          <p class="t-line s3-jab-punch">Не&nbsp;надо так.</p>
+          <p class="t-title s3-jab-punch">Не&nbsp;надо так.</p>
         </div>
       </section>
       <!-- Сцена 4 «Разгон»: перебивки + выкрики, плотно, без новой информации -->
       <section class="scene scene-4" id="scene-4" data-scene="4" aria-label="Разгон">
-        <p class="t-timecode s4-timecode">15:50</p>
+        <p class="stamp">15:50</p>
         <div class="s4-flow">
-          <figure class="s4-frag s4-frag-a">
+          <figure class="s4-frag s4-frag-a print" style="--tilt: -1.2deg">
             <img
               src="/media/frag-circle@800.jpg"
               alt="Круг стульев, спины, чья-то сумка на стуле — команды в работе."
@@ -156,7 +156,7 @@
             />
           </figure>
           <p class="t-shout s4-shout-a">Команды выступили</p>
-          <figure class="s4-frag s4-frag-b">
+          <figure class="s4-frag s4-frag-b print" style="--tilt: 1.6deg">
             <img
               src="/media/frag-laptop@800.jpg"
               alt="Руки над ноутбуком, рядом кто-то объясняет с ручкой в руках."
@@ -166,7 +166,7 @@
             />
           </figure>
           <p class="t-shout s4-shout-b">Энергия под потолком</p>
-          <figure class="s4-frag s4-frag-c">
+          <figure class="s4-frag s4-frag-c print" style="--tilt: -1deg">
             <img
               src="/media/frag-smile@800.jpg"
               alt="Крупно: улыбающиеся лица в толпе, все смотрят в камеру."
@@ -229,6 +229,7 @@
       <!-- Сцена 6 «Выдох» — «стол после праздника» (DL Г7): поп-слой в законной зоне,
            мем только в паре с возражением (DL 88) -->
       <section class="scene scene-6" id="scene-6" data-scene="6" aria-label="Выдох">
+        <p class="stamp s6-stamp">16:01</p>
         <div class="spread s6-grid">
           <figure class="sticker s6-pop">
             <video
@@ -249,7 +250,7 @@
             </figcaption>
           </figure>
           <div class="s6-money">
-            <p class="t-line">Бесплатно. Подвох искали до&nbsp;вас&nbsp;— не&nbsp;нашли.</p>
+            <h2 class="t-title s6-title"><em class="mk">Бесплатно.</em> Подвох искали до&nbsp;вас&nbsp;— не&nbsp;нашли.</h2>
             <p class="t-voice s6-money-voice">
               Проект живёт на&nbsp;донатах&nbsp;— чтобы не&nbsp;зависеть от&nbsp;грантов,
               инвесторов и&nbsp;рекламодателей. Пока мероприятия бесплатны. Если однажды
@@ -279,7 +280,7 @@
             loading="lazy"
           />
           <div class="s7-bio">
-            <p class="t-line">Илья. Это он всё устроил.</p>
+            <h2 class="t-title s7-title">Илья. Это он всё устроил.</h2>
             <p class="t-voice s7-bio-voice">
               Организует «Долой уныние» в&nbsp;Петербурге. Написал две книги
               в&nbsp;издательстве Livrezon, десять лет исследует, как молодёжи жить
@@ -329,7 +330,7 @@
         <div class="spread">
           <div class="s8-when">
             <div class="s8-when-text">
-              <p class="t-line">Раз в&nbsp;две недели. Воскресенье, 13:00–16:00.</p>
+              <h2 class="t-title s8-title">Раз в&nbsp;две недели. Воскресенье, <em class="mk-frog mk">13:00</em>.</h2>
               <p class="t-voice s8-dates">
                 <!-- TODO: проверить актуальность дат перед релизом (DL Ж7) -->
                 Ближайшие: 26&nbsp;июля, 9&nbsp;августа, 23&nbsp;августа.
@@ -337,7 +338,7 @@
                 сегодня, приходи через две недели.
               </p>
             </div>
-            <figure class="s8-winter">
+            <figure class="s8-winter print" style="--tilt: 1.4deg">
               <img
                 src="/media/crowd-winter@800.jpg"
                 srcset="/media/crowd-winter@800.jpg 800w, /media/crowd-winter@1600.jpg 1600w"
@@ -382,7 +383,7 @@
                 </p>
               </li>
             </ol>
-            <figure class="s8-door">
+            <figure class="s8-door print" style="--tilt: -1.3deg">
               <img
                 src="/media/door@800.jpg"
                 alt="Вход в здание с вывеской «Точка кипения» — бежевый фасад, стеклянные двери."
@@ -398,7 +399,7 @@
           </div>
 
           <div class="s8-go">
-            <figure class="s8-echo">
+            <figure class="s8-echo print" style="--tilt: -1.2deg">
               <video
                 class="s8-echo-video"
                 id="echo-video"
