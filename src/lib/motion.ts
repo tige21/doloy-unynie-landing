@@ -19,8 +19,10 @@ export function initMotion(): void {
     return;
   }
 
+  // Калибровка (фидбек «плохо проскролливается»): сглаживание короче —
+  // суммарный лаг Lenis+scrub упал вдвое, скролл отвечает, а не плывёт
   lenis = new Lenis({
-    duration: 0.85,
+    duration: 0.55,
     smoothWheel: true,
     syncTouch: false, // на таче — нативная инерция
   });
@@ -31,7 +33,7 @@ export function initMotion(): void {
   });
   gsap.ticker.lagSmoothing(0);
 
-  dbg('scroll', 'motion: lenis + scrolltrigger готовы');
+  dbg('scroll', 'motion: lenis + scrolltrigger готовы', { duration: 0.55, scrub: 0.35 });
 
   // [FIX] контроль плотности: полная высота страницы после раскладки
   requestAnimationFrame(() => {
@@ -69,7 +71,7 @@ export function pinScene(
       start: 'top top',
       end: `+=${Math.round(lengthVh * 100)}%`,
       pin: true,
-      scrub: 0.6,
+      scrub: 0.35,
       anticipatePin: 1,
       onUpdate: (self) => dbg('scroll', `pin ${section.id}`, self.progress.toFixed(2)),
     },

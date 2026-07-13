@@ -33,8 +33,8 @@ export function initBuildup(): void {
   // Жёсткие входы кадров разгона (перебивают мягкие реверлы)
   scene.querySelectorAll<HTMLElement>('.s4-frag').forEach((frag, i) => {
     gsap.from(frag, {
-      y: 90,
-      scale: 0.9,
+      y: 44,
+      scale: 0.96,
       autoAlpha: 0,
       duration: 0.5,
       ease: 'power4.out',
