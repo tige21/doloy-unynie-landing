@@ -29,6 +29,8 @@
 
 .s7-title {
   max-inline-size: 10em;
+  /* колонка узкая (5/12): полный кегль не вмещает «устроил.» */
+  font-size: clamp(2rem, 1.1rem + 2.6vw, 3.5rem);
 }
 
 .s7-bio-voice {
