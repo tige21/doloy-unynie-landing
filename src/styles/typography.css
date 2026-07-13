@@ -1,0 +1,81 @@
+/* ============================================================
+   Типографика: шкала громкости из 6 ступеней (DL 4.3).
+   Соседние выразительные ступени различаются в разы — это регистры
+   голоса, а не типоразмеры. Выключка всегда влево (исключения —
+   исповедь и крик, задаются локально в сценах).
+   ============================================================ */
+
+/* 1. ШЁПОТ — почти неслышный; не несёт критичной информации */
+.t-whisper {
+  font-family: var(--font-voice);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: color-mix(in srgb, var(--ink) 52%, var(--surface));
+}
+
+/* 2. ПОДПИСЬ — титры-факты при фотографиях; всегда при объекте */
+.t-caption {
+  font-family: var(--font-voice);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.45;
+  max-inline-size: 36em;
+}
+
+/* 3. ГОЛОС — рассказчик; мера строки 45–65 знаков, просторный интерлиньяж */
+.t-voice {
+  font-family: var(--font-voice);
+  font-size: var(--voice-size);
+  font-weight: 400;
+  line-height: var(--voice-leading);
+  max-inline-size: 33em;
+}
+
+/* 4. РЕПЛИКА — усиленный голос; одна на разворот, переносы запрещены */
+.t-line {
+  font-family: var(--font-voice);
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.125rem);
+  font-weight: 600;
+  line-height: 1.3;
+  hyphens: none;
+  max-inline-size: 24em;
+}
+
+/* 5. РАЗВОРОТ — главные строки сцен; экран строится вокруг них */
+.t-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.1rem + 3.2vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.12;
+  hyphens: none;
+}
+
+/* 6. КРИК — предельная ступень; капс, ширина слова = ширина вьюпорта.
+   Живёт только в кульминации (и допустимом финальном жесте). */
+.t-scream {
+  font-family: var(--font-display);
+  font-weight: 850;
+  font-size: min(17.5vw, 12rem);
+  line-height: 0.98;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  hyphens: none;
+}
+
+/* Таймкоды-штампы: табличные цифры, единое начертание (DL 4.4.7) */
+.t-timecode {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+/* Выкрик разгона: капс до четырёх слов (DL 4.4.5) */
+.t-shout {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.25rem, 1rem + 1.8vw, 2.25rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+}

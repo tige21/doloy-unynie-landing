@@ -1,0 +1,91 @@
+/* ============================================================
+   База: reset, поверхность состояний, каркас сцен.
+   Мир плоский (DL 2.1): три слоя — воздух (фон), разворот, наклейки.
+   Радиус 0 повсюду: прямой угол — жест документа (DL 2.2).
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  border-radius: 0;
+}
+
+html {
+  background-color: var(--surface);
+  /* Смена состояния — рассветный переход; хореография может ускорять.
+     Необратимость направления обеспечивает src/lib (state.ts). */
+  transition: background-color 1.6s ease;
+  scroll-behavior: auto; /* скролл священен: без smooth-подмен (AD 7) */
+}
+
+body {
+  font-family: var(--font-voice);
+  color: var(--ink);
+  background-color: var(--surface);
+  transition: background-color 1.6s ease;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    transition: none; /* смена состояний — катом (DL 18.6) */
+  }
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: color-mix(in srgb, var(--scream) 70%, transparent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* Видимый маркерный фокус — доступность не обсуждается (DL 10.3, 18.2) */
+:focus-visible {
+  outline: 3px solid var(--scream);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: var(--cream);
+  color: var(--graphite);
+}
+
+/* --- Каркас сцены --- */
+.scene {
+  position: relative;
+  padding-block: var(--pause-scene);
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+}
+
+/* Контентное поле разворота: потолок ширины, асимметричный воздух (DL 5.5) */
+.spread {
+  max-inline-size: 72rem;
+  margin-inline: auto;
+}
+
+/* Крем-плашка — единственная разрешённая подложка (DL 3.2, 11.2):
+   цветная бумага без рамок, теней и скруглений */
+.plate-cream {
+  background: var(--cream);
+  padding: calc(var(--takt) * 0.75) var(--takt);
+}
+
+/* Наклейка: белый контур вырезки + бумажная тень + живой наклон (DL 9.2).
+   Наклон задаётся per-элемент через --tilt. */
+.sticker {
+  --tilt: 2.5deg;
+  box-shadow: var(--paper-shadow);
+  outline: 6px solid #fff;
+  transform: rotate(var(--tilt));
+}
