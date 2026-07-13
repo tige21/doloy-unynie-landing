@@ -24,7 +24,7 @@
 
 .s6-title {
   max-inline-size: 13em;
-  margin-block-end: calc(var(--takt) * 1.5);
+  margin-block-end: calc(var(--takt) * 2);
 }
 
 .s6-grid {
@@ -50,16 +50,12 @@
 }
 
 .s6-money {
-  grid-column: 7 / span 6;
-}
-
-.s6-money-voice {
-  margin-block-start: var(--pause-thought);
+  grid-column: 7 / span 5;
 }
 
 .s6-meme {
   --tilt: 2deg;
-  margin-block-start: calc(var(--takt) * 2);
+  margin-block-start: calc(var(--takt) * 1.5);
   max-inline-size: 19rem;
 }
 

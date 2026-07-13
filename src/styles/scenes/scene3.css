@@ -5,8 +5,14 @@
   margin-inline: calc(-1 * clamp(1.25rem, 4vw, 4rem));
 }
 
-.s3-process img {
+/* Обёртка обрезает параллакс — фото не наезжает на подпись */
+.s3-media {
+  overflow: hidden;
+}
+
+.s3-media img {
   width: 100%;
+  scale: 1.14; /* запас, чтобы параллакс не оголял края */
 }
 
 .s3-process-caption {

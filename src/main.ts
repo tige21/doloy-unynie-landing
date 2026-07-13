@@ -23,6 +23,7 @@ import { dbg, debugEnabled } from './lib/debug';
 import { initSoundConsent } from './lib/sound-consent';
 import { restoreState } from './lib/state';
 import {
+  initDawnGuard,
   initReveals,
   initStateTriggers,
   prefersReducedMotion,
@@ -44,6 +45,7 @@ restoreState();
 initMotion();
 initHeader();
 initSoundConsent();
+initDawnGuard();
 if (prefersReducedMotion()) {
   initStateTriggers(); // статика: рассвет по IO
 } else {

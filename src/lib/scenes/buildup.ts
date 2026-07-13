@@ -43,10 +43,10 @@ export function initBuildup(): void {
     });
   });
 
-  // Вдох: пульс зерна — атмосфера задерживает дыхание
+  // Пульс зерна на блоке звука — атмосфера задерживает дыхание перед криком
   ScrollTrigger.create({
-    trigger: '#scene-4b',
-    start: 'top 60%',
+    trigger: '.s4-sound-block',
+    start: 'top 70%',
     once: true,
     onEnter: () => {
       boostGrain(0.055, 2.4);

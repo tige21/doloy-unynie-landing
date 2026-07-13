@@ -120,16 +120,18 @@
       <!-- Сцена 3 «Ты в команде»: процесс + переворот «все — спикеры» + один выпад -->
       <section class="scene scene-3" id="scene-3" data-scene="3" aria-label="Ты в команде">
         <figure class="s3-process">
-          <img
-            src="/media/process@1600.jpg"
-            data-distort
-            srcset="/media/process@800.jpg 800w, /media/process@1600.jpg 1600w"
-            sizes="100vw"
-            alt="Зал, разбитый на круги из стульев: команды сидят лицом друг к другу, обсуждают, у кого-то ноутбук."
-            width="1600"
-            height="900"
-            loading="lazy"
-          />
+          <div class="s3-media">
+            <img
+              src="/media/process@1600.jpg"
+              data-distort
+              srcset="/media/process@800.jpg 800w, /media/process@1600.jpg 1600w"
+              sizes="100vw"
+              alt="Зал, разбитый на круги из стульев: команды сидят лицом друг к другу, обсуждают, у кого-то ноутбук."
+              width="1600"
+              height="900"
+              loading="lazy"
+            />
+          </div>
           <figcaption class="t-caption s3-process-caption">
             Команды готовят выступление. Темы и&nbsp;механики меняются каждый раз&nbsp;—
             неизменны три вещи.
@@ -202,29 +204,15 @@
           </figure>
           <p class="t-shout s4-shout-c">Осталось одно</p>
         </div>
-      </section>
-
-      <!-- Сцена 4½ «Вдох»: самый пустой кадр фильма + единственное приглашение звука -->
-      <section class="scene scene-4b" id="scene-4b" data-scene="4b" aria-label="Вдох">
-        <div class="s4b-center">
-          <button type="button" class="s4b-sound" id="sound-consent" aria-pressed="false">
-            <svg
-              class="s4b-sound-mark"
-              viewBox="0 0 32 32"
-              width="26"
-              height="26"
-              aria-hidden="true"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <!-- TODO: заменить на скан рукописного знака звука (DL 12.2) -->
-              <path d="M5 12 L5 20 L11 20 L18 27 L18 5 L11 12 Z" />
-              <path class="s4b-sound-waves" d="M23 11 C26 14 26 18 23 21" />
-            </svg>
-            Тут лучше со&nbsp;звуком, честно
+        <!-- Компактный блок звука в конце разгона (бывшая сцена 4½ удалена) -->
+        <div class="s4-sound-block">
+          <p class="t-line s4-sound-title">Дальше будет громко.</p>
+          <p class="t-voice s4-sound-note">
+            Тридцать человек хором. Лучше со&nbsp;звуком, честно.
+          </p>
+          <button type="button" class="s4-sound-toggle" id="sound-consent" aria-pressed="false">
+            <span class="s4-sound-toggle-off">🔇 Включить звук</span>
+            <span class="s4-sound-toggle-on">🔊 Звук включён ✓</span>
           </button>
         </div>
       </section>
@@ -255,6 +243,9 @@
            мем только в паре с возражением (DL 88) -->
       <section class="scene scene-6" id="scene-6" data-scene="6" aria-label="Выдох">
         <p class="stamp s6-stamp">16:01</p>
+        <div class="spread">
+          <h2 class="t-title s6-title"><em class="mk">Бесплатно.</em> Подвох искали до&nbsp;вас&nbsp;— не&nbsp;нашли.</h2>
+        </div>
         <div class="spread s6-grid">
           <figure class="sticker s6-pop">
             <video
@@ -275,7 +266,6 @@
             </figcaption>
           </figure>
           <div class="s6-money">
-            <h2 class="t-title s6-title"><em class="mk">Бесплатно.</em> Подвох искали до&nbsp;вас&nbsp;— не&nbsp;нашли.</h2>
             <p class="t-voice s6-money-voice">
               Проект живёт на&nbsp;донатах&nbsp;— чтобы не&nbsp;зависеть от&nbsp;грантов,
               инвесторов и&nbsp;рекламодателей. Пока мероприятия бесплатны. Если однажды
@@ -331,19 +321,19 @@
               знакомых и&nbsp;один общий крик. Всё.
             </p>
           </div>
-          <div class="s7-qa s7-qa-scam">
-            <div>
-              <p class="s7-q">— Вы мошенники?</p>
+          <div class="s7-qa">
+            <p class="s7-q">— Вы мошенники?</p>
+            <div class="s7-a-wrap">
               <p class="t-voice s7-a">Нет.</p>
+              <img
+                class="sticker s7-meme"
+                src="/media/meme-scam.png"
+                alt="Мем: человек в балаклаве говорит по телефону, подпись «Я спросил: вы мошенники? Они сказали: нет»."
+                width="269"
+                height="192"
+                loading="lazy"
+              />
             </div>
-            <img
-              class="sticker s7-meme"
-              src="/media/meme-scam.png"
-              alt="Мем: человек в балаклаве говорит по телефону, подпись «Я спросил: вы мошенники? Они сказали: нет»."
-              width="269"
-              height="192"
-              loading="lazy"
-            />
           </div>
           <p class="t-voice s7-contact">
             Проверить лично: <a href="https://t.me/yoube_matters">телеграм @yoube_matters</a>

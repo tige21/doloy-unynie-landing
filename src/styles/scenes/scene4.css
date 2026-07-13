@@ -90,34 +90,52 @@
 /* Сцена 4½ «Вдох» — самый пустой кадр фильма. Не сокращается НИКОГДА
    (страховой минимум №1, EXPERIENCE-SCRIPT §14). */
 
-.scene-4b {
-  min-height: 100svh;
-  display: grid;
-  place-content: center;
-  padding-block: calc(var(--takt) * 12);
-  /* обрыв: экран темнеет на полтона — задержанное дыхание */
-  background: color-mix(in srgb, var(--surface) 90%, var(--graphite));
+/* Блок звука в конце разгона: понятный контекст + явный переключатель */
+.s4-sound-block {
+  margin-block-start: calc(var(--takt) * 4);
+  padding: calc(var(--takt) * 2) clamp(1.25rem, 3vw, 3rem);
+  background: color-mix(in srgb, var(--surface) 88%, var(--graphite));
+  max-inline-size: 34rem;
+  margin-inline: auto;
+  text-align: center;
 }
 
-/* Приглашение звука — реплика, не иконка (AD 5.2) */
-.s4b-sound {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75em;
+.s4-sound-note {
+  margin-block-start: calc(var(--takt) * 0.5);
+  margin-inline: auto;
+}
+
+.s4-sound-toggle {
+  margin-block-start: calc(var(--takt) * 1.25);
   font-family: var(--font-voice);
   font-size: calc(var(--voice-size) * 1.1);
-  font-weight: 500;
-  color: var(--ink);
-  background: none;
+  font-weight: 700;
+  color: var(--graphite);
+  background: var(--cream);
   border: none;
-  padding: 0.5em 0.25em;
+  padding: 0.8em 1.4em;
   cursor: pointer;
+  box-shadow: var(--paper-shadow);
+  transition: transform 0.15s ease;
 }
 
-.s4b-sound[aria-pressed='true'] {
-  color: var(--scream);
+.s4-sound-toggle:hover {
+  transform: translateY(-2px);
 }
 
-.s4b-sound[aria-pressed='true'] .s4b-sound-waves {
-  stroke: var(--scream);
+.s4-sound-toggle .s4-sound-toggle-on {
+  display: none;
+}
+
+.s4-sound-toggle[aria-pressed='true'] {
+  background: var(--frog);
+  color: #fff;
+}
+
+.s4-sound-toggle[aria-pressed='true'] .s4-sound-toggle-on {
+  display: inline;
+}
+
+.s4-sound-toggle[aria-pressed='true'] .s4-sound-toggle-off {
+  display: none;
 }

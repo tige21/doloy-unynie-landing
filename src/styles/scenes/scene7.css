@@ -38,8 +38,30 @@
 .s7-dialog {
   margin-block-start: calc(var(--takt) * 3);
   display: grid;
+  gap: calc(var(--takt) * 2);
+  max-inline-size: 64rem;
+}
+
+/* Пара «вопрос-ответ»: две выровненные колонки — вопрос слева, ответ справа */
+.s7-qa {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
   gap: calc(var(--takt) * 1.5);
-  max-inline-size: 44rem;
+  align-items: start;
+}
+
+.s7-a-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--takt) * 1);
+  align-items: flex-start;
+}
+
+@media (max-width: 700px) {
+  .s7-qa {
+    grid-template-columns: minmax(0, 1fr);
+    gap: calc(var(--takt) * 0.5);
+  }
 }
 
 /* Вопрос скептика — заглушка рукописи (TODO: заменить сканом маркера, DL 4.2) */
@@ -52,24 +74,13 @@
   text-underline-offset: 6px;
 }
 
-.s7-a {
-  margin-block-start: calc(var(--takt) * 0.75);
-}
-
-.s7-qa-scam {
-  display: flex;
-  flex-wrap: wrap;
-  gap: calc(var(--takt) * 1.5);
-  align-items: center;
-}
-
 .s7-meme {
   --tilt: -2deg;
-  max-inline-size: 16rem;
+  max-inline-size: 14rem;
 }
 
 .s7-contact {
-  margin-block-start: calc(var(--takt) * 1);
+  margin-block-start: calc(var(--takt) * 0.5);
 }
 
 @media (max-width: 700px) {
