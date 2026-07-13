@@ -1,5 +1,4 @@
 import { dbg } from './debug';
-import { hasSoundConsent } from './sound-consent';
 import { advanceState } from './state';
 import { prefersReducedMotion } from './choreography';
 
@@ -130,8 +129,10 @@ export function initClimax(): void {
   const start = async (): Promise<void> => {
     if (played) return;
     played = true;
-    video.muted = !hasSoundConsent();
-    dbg('climax', 'start', { sound: !video.muted });
+    // Звук отключён по решению заказчика (v3.1): блок согласия удалён,
+    // удары несут типографика и волны
+    video.muted = true;
+    dbg('climax', 'start', { sound: false });
     try {
       await video.play();
     } catch (err) {

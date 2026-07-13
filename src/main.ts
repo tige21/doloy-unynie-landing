@@ -20,7 +20,6 @@ import './styles/scenes/scene7.css';
 import './styles/scenes/scene8.css';
 import { gsap } from 'gsap';
 import { dbg, debugEnabled } from './lib/debug';
-import { initSoundConsent } from './lib/sound-consent';
 import { restoreState } from './lib/state';
 import {
   initDawnGuard,
@@ -44,7 +43,6 @@ import { initHeader } from './lib/header';
 restoreState();
 initMotion();
 initHeader();
-initSoundConsent();
 initDawnGuard();
 if (prefersReducedMotion()) {
   initStateTriggers(); // статика: рассвет по IO
