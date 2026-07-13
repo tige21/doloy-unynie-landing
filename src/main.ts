@@ -19,6 +19,7 @@ import {
   initDawnGuard,
   initReveals,
   initStateTriggers,
+  isMobileStaging,
   prefersReducedMotion,
 } from './lib/choreography';
 import { initMotion } from './lib/motion';
@@ -26,7 +27,7 @@ import { initMotion } from './lib/motion';
 import { initClimax, initEchoCycle, initPopLoop } from './lib/climax';
 import { initLoadingOrder } from './lib/degradation';
 
-import { initPrologue } from './lib/scenes/prologue';
+import { initConfessionPin, initPrologueIntro } from './lib/scenes/prologue';
 import { initDoorScene } from './lib/scenes/door';
 import { initMarquees } from './lib/marquee';
 import { initBuildup } from './lib/scenes/buildup';
@@ -38,11 +39,24 @@ restoreState();
 initMotion();
 initHeader();
 initDawnGuard();
+const mobileStaging = isMobileStaging();
 if (prefersReducedMotion()) {
   initStateTriggers(); // статика: рассвет по IO
+} else if (mobileStaging) {
+  // Мобильная постановка: минимум моушна — контент просто есть и читается.
+  // Остаются события фильма: интро пролога, рост крика (короткий пин),
+  // удары/волны, рассвет, marquee. Реверлы/пины 1-2/таймкод/параллакс —
+  // не создаются (фидбек: «слишком анимированное, пользователь теряется»).
+  dbg('scroll', 'staging: mobile — статичный поток, пин только на крике');
+  initPrologueIntro();
+  initStateTriggers(); // рассвет по IO вместо пин-таймлайна
+  initMarquees();
+  initScreamGrowth(); // ДО initClimax: класс is-pinned переключает старт на ручной
 } else {
+  dbg('scroll', 'staging: desktop — полная постановка');
   initReveals();
-  initPrologue(); // pinned-исповедь зовёт рассвет из таймлайна
+  initPrologueIntro();
+  initConfessionPin(); // pinned-исповедь зовёт рассвет из таймлайна
   initDoorScene();
   initMarquees();
   initBuildup();
@@ -77,6 +91,7 @@ type NavigatorHints = Navigator & {
 const nav = navigator as NavigatorHints;
 const webglAllowed =
   !prefersReducedMotion() &&
+  !mobileStaging && // мобильная постановка: минимум моушна, CSS-волны полноценны
   !nav.connection?.saveData &&
   (nav.deviceMemory ?? 8) >= 4;
 

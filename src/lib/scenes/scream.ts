@@ -3,6 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { dbg } from '../debug';
 import { pinScene } from '../motion';
 import { startClimax } from '../climax';
+import { isMobileStaging } from '../choreography';
 
 /**
  * Сцена 5 v2: видео крика входит малой вклейкой в центре кадра и
@@ -22,9 +23,12 @@ export function initScreamGrowth(): void {
 
   const words = scene.querySelectorAll<HTMLElement>('.s5-word');
 
-  // [FIX] pin крика удлинён 1.1 → 1.9 vh: событие фильма проживается,
-  // а не проскакивает за один свайп (фидбек «очень резко пролистывается»)
-  const PIN_LENGTH = 1.9;
+  // Метраж события по постановке (осознанное решение, не глобальное ужатие):
+  // десктоп 1.5 — короче 1.9 ради «проскролливаемости», но длиннее 1.1,
+  // на котором событие проскакивало; мобилка 1.0 — рост быстрый, дальше
+  // видео играет в реальном времени, удары гарантирует watch() + страховка
+  // «skipped past climax» на любой скорости свайпа.
+  const PIN_LENGTH = isMobileStaging() ? 1.0 : 1.5;
   dbg('climax', '[FIX] scream pin length', PIN_LENGTH);
 
   const tl = pinScene(scene, PIN_LENGTH, (t) => {

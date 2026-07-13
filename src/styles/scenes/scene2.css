@@ -102,3 +102,19 @@
 .s2-small figcaption {
   margin-block-start: calc(var(--takt) * 0.5);
 }
+
+/* Мобайл (статичный поток без пина): плотнее — «фрагмент → целое»
+   идёт шагами свайпа без пустых полей */
+@media (max-width: 700px) {
+  .scene-2 {
+    padding-block: calc(var(--takt) * 2);
+  }
+
+  .s2-crowd {
+    margin-block-start: calc(var(--takt) * 2);
+  }
+
+  .s2-small {
+    margin-block-start: calc(var(--takt) * 1.5);
+  }
+}

@@ -66,6 +66,10 @@
 }
 
 @media (max-width: 700px) {
+  .scene-4 {
+    padding-block: calc(var(--takt) * 2.5); /* собранный разгон */
+  }
+
   .s4-frag-a,
   .s4-frag-b,
   .s4-frag-c {

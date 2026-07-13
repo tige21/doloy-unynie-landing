@@ -13,6 +13,12 @@ import { splitText } from './split';
 export const prefersReducedMotion = (): boolean =>
   matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/** Мобильная постановка: минимум моушна — остаются только события фильма
+ *  (интро пролога, рост крика, удары, рассвет). Брейкпоинт согласован
+ *  со сценой 5 (700px). */
+export const isMobileStaging = (): boolean =>
+  matchMedia('(pointer: coarse)').matches || matchMedia('(max-width: 700px)').matches;
+
 /** Сцены с генерик-реверлами (pinned-сцены исключены — у них свои таймлайны) */
 const REVEAL_SCENES = new Set(['3', '4', '6', '7', '8', '9']);
 
@@ -96,15 +102,16 @@ export function initReveals(): void {
 
     for (const block of blocksOf(scene)) {
       if (block.classList.contains('t-title')) continue; // титры — посимвольно
+      // Калибровка (фидбек «контент догоняет читателя»): подъём мягче,
+      // без clipPath (двойной эффект + дорогой repaint), старт у кромки
       gsap.from(block, {
         autoAlpha: 0,
-        y: 56,
-        clipPath: 'inset(0% 0% 32% 0%)',
-        duration: 0.9,
+        y: 28,
+        duration: 0.6,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: block,
-          start: 'top 86%',
+          start: 'top 92%',
           once: true,
           onEnter: () => dbg('scroll', `reveal scene=${id}`, block.className),
         },
