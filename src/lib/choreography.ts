@@ -92,6 +92,31 @@ export function titleReveal(el: HTMLElement, trigger?: HTMLElement): void {
   });
 }
 
+/** Мобильные реверлы: ТОЛЬКО картинки, лёгкий фейд-подъём у кромки
+ *  экрана — фото «оживают», но текст статичен и ничего не прячется
+ *  надолго (фидбек: совсем без анимаций появления картинок сухо). */
+export function initMobileReveals(): void {
+  gsap.registerPlugin(ScrollTrigger);
+  const targets = document.querySelectorAll<HTMLElement>(
+    '.scene:not(.scene-5) figure, .scene:not(.scene-5) .sticker',
+  );
+  targets.forEach((el) => {
+    gsap.from(el, {
+      autoAlpha: 0,
+      y: 20,
+      duration: 0.5,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 94%',
+        once: true,
+        onEnter: () => dbg('scroll', 'mobile reveal', el.className),
+      },
+    });
+  });
+  dbg('scroll', 'mobile reveals initialized', { count: targets.length });
+}
+
 /** Заметные реверлы блоков нефиксированных сцен. */
 export function initReveals(): void {
   gsap.registerPlugin(ScrollTrigger);

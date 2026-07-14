@@ -17,6 +17,7 @@ import { dbg, debugEnabled } from './lib/debug';
 import { restoreState } from './lib/state';
 import {
   initDawnGuard,
+  initMobileReveals,
   initReveals,
   initStateTriggers,
   isMobileStaging,
@@ -50,6 +51,7 @@ if (prefersReducedMotion()) {
   dbg('scroll', 'staging: mobile — статичный поток, пин только на крике');
   initPrologueIntro();
   initStateTriggers(); // рассвет по IO вместо пин-таймлайна
+  initMobileReveals(); // картинки оживают лёгким фейдом, текст статичен
   initMarquees();
   initScreamGrowth(); // ДО initClimax: класс is-pinned переключает старт на ручной
 } else {
