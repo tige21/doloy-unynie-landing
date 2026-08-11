@@ -29,15 +29,18 @@
     <link rel="stylesheet" crossorigin href="/assets/index-CYlFGzgQ.css">
     <style>
       /* ---- Тренажёр: страница-специфичные стили поверх базовой темы ---- */
-      .t-hero { padding-block: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3rem); }
+      .t-hero { padding-block: clamp(5.5rem, 12vh, 9rem) clamp(1.5rem, 4vw, 3rem); }
       .t-hero-title {
         font-family: var(--font-display);
         font-weight: 800;
-        line-height: 1.02;
+        line-height: 1.04;
         letter-spacing: -0.01em;
-        font-size: clamp(2rem, 1.2rem + 5vw, 4.25rem);
+        font-size: clamp(1.6rem, 0.9rem + 4vw, 4.25rem);
         margin: 0 0 clamp(.75rem, 2vw, 1.25rem);
         text-transform: uppercase;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
       }
       .t-hero-title .t-scream { color: var(--scream); }
       .t-hero-lead {
