@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Тренажёр «Долой уныние» — навыки будущего вместо скроллинга</title>
+    <meta
+      name="description"
+      content="Онлайн-тренажёр в Telegram: развивайся за 15–20 минут в день. Креативные задания, обратная связь и навыки будущего вместо бесконечного скроллинга."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>document.documentElement.classList.add('js');</script>
+    <!-- Критичные шрифты первого экрана -->
+    <link rel="preload" href="/fonts/unbounded-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/golos-text-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/golos-text-cyrillic-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <meta name="theme-color" content="#14110e" />
+    <link rel="canonical" href="https://yoube.space/training" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Тренажёр «Долой уныние» — навыки будущего вместо скроллинга" />
+    <meta
+      property="og:description"
+      content="Онлайн-тренажёр в Telegram: развивайся за 15–20 минут в день. Креативные задания и навыки будущего вместо скроллинга."
+    />
+    <meta property="og:url" content="https://yoube.space/training" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" crossorigin href="/assets/index-CYlFGzgQ.css">
+    <style>
+      /* ---- Тренажёр: страница-специфичные стили поверх базовой темы ---- */
+      .t-hero { padding-block: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3rem); }
+      .t-hero-title {
+        font-family: var(--font-display);
+        font-weight: 800;
+        line-height: 1.02;
+        letter-spacing: -0.01em;
+        font-size: clamp(2rem, 1.2rem + 5vw, 4.25rem);
+        margin: 0 0 clamp(.75rem, 2vw, 1.25rem);
+        text-transform: uppercase;
+      }
+      .t-hero-title .t-scream { color: var(--scream); }
+      .t-hero-lead {
+        font-family: var(--font-voice);
+        font-size: clamp(1.05rem, .95rem + .6vw, 1.4rem);
+        line-height: 1.5;
+        max-width: var(--measure);
+        color: var(--graphite-soft);
+        margin: 0 0 clamp(1.25rem, 3vw, 2rem);
+      }
+      .t-hero-figure {
+        margin: clamp(1.5rem, 4vw, 2.5rem) 0 0;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: var(--paper-shadow-lifted);
+        background: var(--morning);
+      }
+      .t-hero-figure img { display: block; width: 100%; height: auto; }
+
+      /* Списки-«штуки» */
+      .t-list { list-style: none; padding: 0; margin: clamp(1rem,2vw,1.5rem) 0; display: grid; gap: .55rem; max-width: 44rem; }
+      .t-list li {
+        position: relative;
+        padding-left: 1.6rem;
+        font-family: var(--font-voice);
+        font-size: var(--voice-size);
+        line-height: 1.5;
+      }
+      .t-list li::before {
+        content: "";
+        position: absolute; left: 0; top: .62em;
+        width: .55rem; height: .55rem; border-radius: 2px;
+        background: var(--scream);
+        transform: rotate(45deg);
+      }
+      .t-list.is-gain li::before { background: var(--frog); }
+
+      .t-note {
+        font-family: var(--font-voice);
+        font-style: italic;
+        color: var(--graphite-soft);
+        border-left: 3px solid var(--morning-deep);
+        padding-left: 1rem;
+        margin: 1.25rem 0;
+        max-width: var(--measure);
+      }
+      .t-body p {
+        font-family: var(--font-voice);
+        font-size: var(--voice-size);
+        line-height: var(--voice-leading);
+        max-width: var(--measure);
+        margin: 0 0 1rem;
+      }
+      .t-hi { background: linear-gradient(transparent 60%, #ffd8c4 0); font-weight: 600; }
+
+      /* ---- Карусель ---- */
+      .carousel { margin: clamp(1.5rem, 4vw, 2.25rem) 0 0; }
+      .carousel-head {
+        display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+        margin-bottom: .75rem; flex-wrap: wrap;
+      }
+      .carousel-title {
+        font-family: var(--font-display); font-weight: 700;
+        font-size: clamp(1.05rem, .95rem + .4vw, 1.35rem); margin: 0;
+      }
+      .carousel-hint { font-family: var(--font-voice); font-size: .9rem; color: var(--graphite-soft); }
+      .carousel-stage { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .5rem; }
+      .carousel-viewport { overflow: hidden; border-radius: 16px; }
+      .carousel-track { display: flex; margin: 0; padding: 0; list-style: none; transition: transform .38s cubic-bezier(.22,.61,.36,1); }
+      .carousel-slide { flex: 0 0 100%; display: flex; justify-content: center; align-items: flex-start; padding: clamp(.5rem, 2vw, 1.25rem); }
+      .carousel-slide img {
+        display: block; max-width: 100%; width: auto;
+        max-height: min(72vh, 640px); height: auto;
+        border-radius: 12px; box-shadow: var(--paper-shadow);
+        background: #fff;
+      }
+      .carousel-btn {
+        appearance: none; border: 0; cursor: pointer;
+        width: 2.75rem; height: 2.75rem; border-radius: 50%;
+        background: var(--graphite); color: var(--paper);
+        font-size: 1.4rem; line-height: 1; display: grid; place-items: center;
+        box-shadow: var(--paper-shadow); transition: transform .15s ease, background .15s ease;
+        flex: 0 0 auto;
+      }
+      .carousel-btn:hover { background: var(--scream); color: var(--scream-ink); }
+      .carousel-btn:active { transform: scale(.92); }
+      .carousel-btn:focus-visible { outline: 3px solid var(--scream); outline-offset: 2px; }
+      .carousel-dots { display: flex; gap: .4rem; justify-content: center; margin-top: .75rem; }
+      .carousel-dot {
+        width: .55rem; height: .55rem; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+        background: var(--morning-deep); transition: background .15s ease, transform .15s ease;
+      }
+      .carousel-dot[aria-current="true"] { background: var(--scream); transform: scale(1.25); }
+      @media (max-width: 560px) {
+        .carousel-btn { width: 2.25rem; height: 2.25rem; font-size: 1.15rem; }
+      }
+
+      /* ---- Навыки ---- */
+      .skills { list-style: none; padding: 0; margin: clamp(1.25rem,3vw,2rem) 0 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+      .skill { background: var(--cream); border-radius: 14px; padding: 1.25rem 1.25rem 1.1rem; box-shadow: var(--paper-shadow); }
+      .skill h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; margin: 0 0 .6rem; }
+      .skill ul { margin: 0 0 .75rem; padding-left: 1.1rem; }
+      .skill li { font-family: var(--font-voice); font-size: .98rem; line-height: 1.45; margin-bottom: .2rem; }
+      .skill-why { font-family: var(--font-voice); font-size: .92rem; color: var(--graphite-soft); border-top: 1px dashed var(--morning-deep); padding-top: .6rem; margin: 0; }
+      .skill-why b { color: var(--frog-deep); }
+
+      /* ---- Форматы заданий ---- */
+      .task-types { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(15rem,1fr)); margin: 1.25rem 0 0; padding: 0; list-style: none; }
+      .task-types li { background: var(--paper); border: 1px solid var(--morning-deep); border-radius: 12px; padding: 1rem; font-family: var(--font-voice); }
+      .task-types b { display: block; font-family: var(--font-display); font-size: .98rem; margin-bottom: .3rem; }
+
+      /* ---- Автор ---- */
+      .author-card { background: var(--cream); border-radius: 16px; padding: clamp(1.25rem,3vw,2rem); box-shadow: var(--paper-shadow); max-width: 48rem; }
+      .author-card p { font-family: var(--font-voice); line-height: 1.6; margin: 0 0 .8rem; }
+      .author-card p:last-child { margin-bottom: 0; }
+      .author-card .author-name { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; }
+
+      /* ---- FAQ ---- */
+      .faq { max-width: 48rem; margin: clamp(1.25rem,3vw,2rem) 0 0; display: grid; gap: .6rem; }
+      .faq details { background: var(--paper); border: 1px solid var(--morning-deep); border-radius: 12px; padding: .25rem .25rem; }
+      .faq summary { font-family: var(--font-display); font-weight: 600; font-size: 1rem; cursor: pointer; list-style: none; padding: .85rem 1rem; position: relative; }
+      .faq summary::-webkit-details-marker { display: none; }
+      .faq summary::after { content: "+"; position: absolute; right: 1rem; top: .8rem; font-size: 1.3rem; color: var(--scream); transition: transform .2s ease; }
+      .faq details[open] summary::after { transform: rotate(45deg); }
+      .faq p { font-family: var(--font-voice); line-height: 1.6; margin: 0 1rem 1rem; color: var(--graphite-soft); }
+
+      /* ---- Регистрация ---- */
+      .register { background: var(--graphite); color: var(--paper); border-radius: 18px; padding: clamp(1.5rem,4vw,2.75rem); text-align: center; }
+      .register h2 { color: var(--paper); }
+      .register .eyebrow { color: var(--scream); }
+      .register p { font-family: var(--font-voice); line-height: 1.6; max-width: 34rem; margin: 0 auto 1.25rem; color: #d9d6d0; }
+      .register ol { text-align: left; max-width: 22rem; margin: 0 auto 1.5rem; font-family: var(--font-voice); line-height: 1.6; }
+      .register .btn-scream { margin-top: .5rem; }
+
+      .price-highlight td { background: #fff3ea; }
+      .price-highlight .cmp-term { color: var(--scream); }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="sh-logo" href="/">долой уныние</a>
+      <nav class="sh-nav" aria-label="Разделы">
+        <a href="#about" data-nav>О тренажёре</a>
+        <a href="#results" data-nav>Результаты</a>
+        <a href="#how" data-nav>Как устроен</a>
+        <a href="#pricing" data-nav>Условия</a>
+        <a href="#faq" data-nav>FAQ</a>
+      </nav>
+      <a class="sh-cta" href="#join" data-nav>Участвовать</a>
+    </header>
+
+    <main id="top">
+      <!-- 1. ШАПКА -->
+      <section class="section t-hero" aria-labelledby="t-hero-title">
+        <div class="wrap">
+          <p class="eyebrow">Онлайн-тренажёр «Долой уныние»</p>
+          <h1 class="t-hero-title" id="t-hero-title">
+            Навыки будущего <span class="t-scream">вместо скроллинга</span>
+          </h1>
+          <p class="t-hero-lead">
+            Онлайн-тренажёр без необходимости выделять время: развивайся в маршрутке,
+            на скучной паре или в очереди к терапевту.
+          </p>
+          <a class="btn-scream" href="#about" data-nav>ЧТО?!</a>
+          <figure class="t-hero-figure">
+            <img src="/media/training/hero.jpg" width="1920" height="1088"
+                 alt="Подросток в транспорте увлечённо смотрит в смартфон" />
+          </figure>
+        </div>
+      </section>
+
+      <!-- 2. О ТРЕНАЖЁРЕ -->
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="wrap t-body">
+          <p class="eyebrow">О тренажёре</p>
+          <h2 class="section-title" id="about-title">Разбуди мозги в эпоху ИИ</h2>
+
+          <ul class="t-list">
+            <li>Школы и вузы дают мало практических навыков</li>
+            <li>Онлайн-курсы стоят дорого или в них много воды</li>
+            <li>Нейронки позволяют жить на автомате как робот</li>
+            <li>Сложно выделить время на себя и своё развитие</li>
+            <li>Тревожка и выгорание провоцируют скроллинг</li>
+          </ul>
+
+          <p class="t-note">Ощущение: день прожит зря, ничего полезного…</p>
+
+          <p>
+            Поэтому мы разработали онлайн-тренажёр, который позволяет
+            <span class="t-hi">развиваться за 15–20 минут в день</span>.
+          </p>
+          <p>
+            Это Telegram-чат, где вместе с другими участниками ты выполняешь креативные
+            задания и прокачиваешь навыки, избавляясь от чувства вины за слитое время.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. РЕЗУЛЬТАТЫ УЧАСТНИКОВ -->
+      <section class="section" id="results" aria-labelledby="results-title">
+        <div class="wrap t-body">
+          <p class="eyebrow">Результаты участников</p>
+          <h2 class="section-title" id="results-title">За месяц ты получаешь</h2>
+
+          <ul class="t-list is-gain">
+            <li>30 активных коллег</li>
+            <li>4 новых future-навыка</li>
+            <li>12 творческих заданий</li>
+            <li>80 мнений и взглядов</li>
+            <li>12 обратных связей</li>
+            <li>8 крутых дискуссий в чате</li>
+            <li>20 углублённых материалов</li>
+          </ul>
+
+          <p><span class="t-hi">Преврати триггеры из-за соцсетей в инструмент саморазвития!</span></p>
+
+          <!-- Карусель: Отзывы -->
+          <figure class="carousel" data-carousel aria-roledescription="карусель" aria-label="Примеры отзывов участников">
+            <div class="carousel-head">
+              <h3 class="carousel-title">Примеры отзывов</h3>
+              <span class="carousel-hint">листайте →</span>
+            </div>
+            <div class="carousel-stage">
+              <button class="carousel-btn" data-dir="-1" type="button" aria-label="Предыдущий отзыв">‹</button>
+              <div class="carousel-viewport">
+                <ul class="carousel-track">
+                  <li class="carousel-slide"><img src="/media/training/reviews/01.png" loading="lazy" alt="Отзыв участника 1" /></li>
+                  <li class="carousel-slide"><img src="/media/training/reviews/02.png" loading="lazy" alt="Отзыв участника 2" /></li>
+                  <li class="carousel-slide"><img src="/media/training/reviews/03.png" loading="lazy" alt="Отзыв участника 3" /></li>
+                  <li class="carousel-slide"><img src="/media/training/reviews/04.png" loading="lazy" alt="Отзыв участника 4" /></li>
+                </ul>
+              </div>
+              <button class="carousel-btn" data-dir="1" type="button" aria-label="Следующий отзыв">›</button>
+            </div>
+            <div class="carousel-dots" role="tablist" aria-label="Навигация по отзывам"></div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 4. КАК УСТРОЕН ТРЕНАЖЁР -->
+      <section class="section" id="how" aria-labelledby="how-title">
+        <div class="wrap t-body">
+          <p class="eyebrow">Как устроен тренажёр</p>
+          <h2 class="section-title" id="how-title">Что спрятано внутри</h2>
+
+          <p>
+            Участники — активная молодёжь из разных городов и стран: Россия, Казахстан,
+            Германия, Финляндия, Кипр, Сербия и др.
+          </p>
+
+          <!-- Карусель: Участники -->
+          <figure class="carousel" data-carousel aria-roledescription="карусель" aria-label="Примеры участников">
+            <div class="carousel-head">
+              <h3 class="carousel-title">Примеры участников</h3>
+              <span class="carousel-hint">листайте →</span>
+            </div>
+            <div class="carousel-stage">
+              <button class="carousel-btn" data-dir="-1" type="button" aria-label="Предыдущий">‹</button>
+              <div class="carousel-viewport">
+                <ul class="carousel-track">
+                  <li class="carousel-slide"><img src="/media/training/participants/01.png" loading="lazy" alt="Участник 1" /></li>
+                  <li class="carousel-slide"><img src="/media/training/participants/02.png" loading="lazy" alt="Участник 2" /></li>
+                  <li class="carousel-slide"><img src="/media/training/participants/03.png" loading="lazy" alt="Участник 3" /></li>
+                  <li class="carousel-slide"><img src="/media/training/participants/04.png" loading="lazy" alt="Участник 4" /></li>
+                </ul>
+              </div>
+              <button class="carousel-btn" data-dir="1" type="button" aria-label="Следующий">›</button>
+            </div>
+            <div class="carousel-dots" role="tablist" aria-label="Навигация по участникам"></div>
+          </figure>
+
+          <h3 class="section-title" style="font-size:clamp(1.3rem,1.1rem+1vw,1.9rem);margin-top:clamp(2rem,5vw,3rem)">
+            5 навыков, которые мы прокачиваем
+          </h3>
+          <ul class="skills">
+            <li class="skill">
+              <h3>Фильтровать информацию от ИИ</h3>
+              <ul>
+                <li>Видеть искажения</li>
+                <li>Искать первоисточники</li>
+                <li>Отделять факты от гипотез</li>
+              </ul>
+              <p class="skill-why"><b>Зачем:</b> чтобы не принимать ошибочные решения на основе неполных или искажённых данных.</p>
+            </li>
+            <li class="skill">
+              <h3>Постановка целей и задач</h3>
+              <ul>
+                <li>Разница целей и задач</li>
+                <li>Исключение самообманов</li>
+                <li>Навыки формулирования</li>
+              </ul>
+              <p class="skill-why"><b>Зачем:</b> чтобы исключить из жизни недостижимые цели и ненужные задачи.</p>
+            </li>
+            <li class="skill">
+              <h3>Навыки самопрезентации</h3>
+              <ul>
+                <li>Понимание контекстов</li>
+                <li>Формулы возвышения</li>
+                <li>Подача и сторителлинг</li>
+              </ul>
+              <p class="skill-why"><b>Зачем:</b> чтобы производить приятное впечатление, заводить друзей, находить работу.</p>
+            </li>
+            <li class="skill">
+              <h3>Менеджмент загонов</h3>
+              <ul>
+                <li>Знание своих триггеров</li>
+                <li>Умение отделить эмоции</li>
+                <li>Техники и приёмы работы</li>
+              </ul>
+              <p class="skill-why"><b>Зачем:</b> чтобы выбраться из синдрома самозванца и начать жить свою лучшую жизнь.</p>
+            </li>
+            <li class="skill">
+              <h3>Навык уместно шутить</h3>
+              <ul>
+                <li>Знание функций юмора</li>
+                <li>Набор комических приёмов</li>
+                <li>Практическая отработка</li>
+              </ul>
+              <p class="skill-why"><b>Зачем:</b> чтобы влюблять в себя людей, разряжать обстановку, пояснять сложные мысли.</p>
+            </li>
+          </ul>
+
+          <h3 class="section-title" style="font-size:clamp(1.3rem,1.1rem+1vw,1.9rem);margin-top:clamp(2rem,5vw,3rem)">
+            Три креативных задания в неделю
+          </h3>
+          <ul class="task-types">
+            <li><b>Вводное задание</b>Участники создают материал для работы</li>
+            <li><b>Командное задание</b>Участники дают обратную связь друг другу</li>
+            <li><b>Задание-катарсис</b>Участники получают новый взгляд на тему</li>
+          </ul>
+
+          <!-- Карусель: Задания -->
+          <figure class="carousel" data-carousel aria-roledescription="карусель" aria-label="Примеры заданий">
+            <div class="carousel-head">
+              <h3 class="carousel-title">Примеры заданий</h3>
+              <span class="carousel-hint">листайте →</span>
+            </div>
+            <div class="carousel-stage">
+              <button class="carousel-btn" data-dir="-1" type="button" aria-label="Предыдущее задание">‹</button>
+              <div class="carousel-viewport">
+                <ul class="carousel-track">
+                  <li class="carousel-slide"><img src="/media/training/tasks/01.png" loading="lazy" alt="Задание 1" /></li>
+                  <li class="carousel-slide"><img src="/media/training/tasks/02.png" loading="lazy" alt="Задание 2" /></li>
+                  <li class="carousel-slide"><img src="/media/training/tasks/03.png" loading="lazy" alt="Задание 3" /></li>
+                  <li class="carousel-slide"><img src="/media/training/tasks/04.png" loading="lazy" alt="Задание 4" /></li>
+                </ul>
+              </div>
+              <button class="carousel-btn" data-dir="1" type="button" aria-label="Следующее задание">›</button>
+            </div>
+            <div class="carousel-dots" role="tablist" aria-label="Навигация по заданиям"></div>
+          </figure>
+
+          <p style="margin-top:clamp(2rem,5vw,3rem)">
+            Ответы участников — не просто сообщения, а развёрнутые заметки и эссе,
+            которые увлекательно читать.
+          </p>
+
+          <!-- Карусель: Ответы -->
+          <figure class="carousel" data-carousel aria-roledescription="карусель" aria-label="Примеры ответов участников">
+            <div class="carousel-head">
+              <h3 class="carousel-title">Примеры ответов участников</h3>
+              <span class="carousel-hint">листайте →</span>
+            </div>
+            <div class="carousel-stage">
+              <button class="carousel-btn" data-dir="-1" type="button" aria-label="Предыдущий ответ">‹</button>
+              <div class="carousel-viewport">
+                <ul class="carousel-track">
+                  <li class="carousel-slide"><img src="/media/training/answers/01.png" loading="lazy" alt="Ответ участника 1" /></li>
+                  <li class="carousel-slide"><img src="/media/training/answers/02.png" loading="lazy" alt="Ответ участника 2" /></li>
+                  <li class="carousel-slide"><img src="/media/training/answers/03.png" loading="lazy" alt="Ответ участника 3" /></li>
+                  <li class="carousel-slide"><img src="/media/training/answers/04.png" loading="lazy" alt="Ответ участника 4" /></li>
+                </ul>
+              </div>
+              <button class="carousel-btn" data-dir="1" type="button" aria-label="Следующий ответ">›</button>
+            </div>
+            <div class="carousel-dots" role="tablist" aria-label="Навигация по ответам"></div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 5. УСЛОВИЯ УЧАСТИЯ -->
+      <section class="section" id="pricing" aria-labelledby="pricing-title">
+        <div class="wrap">
+          <p class="eyebrow">Условия участия</p>
+          <h2 class="section-title" id="pricing-title">Чем мы отличаемся</h2>
+
+          <table class="compare" aria-describedby="pricing-title">
+            <thead>
+              <tr>
+                <th scope="col" class="cmp-h cmp-h-old">Средний онлайн-курс</th>
+                <th scope="col" class="cmp-h cmp-h-new">Наш онлайн-тренажёр</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cmp-old">
+                  <strong class="cmp-term">Бизнес</strong>
+                  <span class="cmp-desc">Исключительно бизнес-цели: максимизация прибыли</span>
+                </td>
+                <td class="cmp-new">
+                  <strong class="cmp-term">Соцпроект</strong>
+                  <span class="cmp-desc">Окупаемость затрат, независимость от грантов, инвесторов и рекламы</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="cmp-old">
+                  <strong class="cmp-term">Наценка</strong>
+                  <span class="cmp-desc">Коммерческая наценка: 300–1000% от себестоимости</span>
+                </td>
+                <td class="cmp-new">
+                  <strong class="cmp-term">Себестоимость</strong>
+                  <span class="cmp-desc">Работаем по себестоимости, покрывая затраты на проведение</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="cmp-old">
+                  <strong class="cmp-term">Купля-продажа</strong>
+                  <span class="cmp-desc">Отношения купли-продажи образовательных услуг</span>
+                </td>
+                <td class="cmp-new">
+                  <strong class="cmp-term">Поддержка</strong>
+                  <span class="cmp-desc">Форма поддержки сообщества: участники скидываются на развитие друг друга</span>
+                </td>
+              </tr>
+              <tr class="price-highlight">
+                <td class="cmp-old">
+                  <strong class="cmp-term">52 000 ₽</strong>
+                  <span class="cmp-desc">Средний ценник онлайн-курса</span>
+                </td>
+                <td class="cmp-new">
+                  <strong class="cmp-term">от 1000 ₽</strong>
+                  <span class="cmp-desc">Месяц участия: донат на любую сумму</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 6. АВТОР -->
+      <section class="section" id="author" aria-labelledby="author-title">
+        <div class="wrap">
+          <p class="eyebrow">Автор тренажёра</p>
+          <h2 class="section-title" id="author-title">Кто ведёт</h2>
+          <div class="author-card">
+            <p><span class="author-name">Илья.</span> Организую мероприятия «Долой уныние» в Петербурге.</p>
+            <p>
+              Пока учился в универе, написал две книги в издательстве Livrezon: про карьерные
+              стратегии и проблемы молодёжи. В итоге связал с этим жизнь.
+            </p>
+            <p>
+              Соавтор нескольких коллективных книг и сборников: контент, социалка, творчество,
+              организация труда.
+            </p>
+            <p>
+              Как редактор участвовал в написании 100 статей, 30 книг и запуске 20 YouTube-каналов.
+              Организатор сообщества YouBe на 10 тыс. человек.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="wrap">
+          <p class="eyebrow">Вопросы и ответы</p>
+          <h2 class="section-title" id="faq-title">FAQ</h2>
+
+          <div class="faq">
+            <details>
+              <summary>Я занятой человек, что если не смогу выделить время?</summary>
+              <p>Выделять время не нужно: достаточно смартфона и 15–20 минут, например, в транспорте.</p>
+            </details>
+            <details>
+              <summary>Telegram блокируют, что будете делать?</summary>
+              <p>Пока большинство им пользуется, мы тоже. Если будет невозможно, найдём иное решение.</p>
+            </details>
+            <details>
+              <summary>Плохо грузятся видео в Telegram, как быть?</summary>
+              <p>Тренажёр без видео: задания текстовые + схемы + голосовые до 5 минут.</p>
+            </details>
+            <details>
+              <summary>Обязательно ли выполнять все задания?</summary>
+              <p>Нет, если нужен перерыв, можно его сделать, осуждать никто не будет.</p>
+            </details>
+            <details>
+              <summary>А если предлагаемые навыки будут неактуальны?</summary>
+              <p>Проводим голосование в чате и выбираем самые актуальные темы и навыки на месяц.</p>
+            </details>
+            <details>
+              <summary>Можно ли участвовать вместе с друзьями?</summary>
+              <p>Это всячески поощряется — пришлите им ссылку на эту страницу.</p>
+            </details>
+            <details>
+              <summary>Как покинуть формат и можно ли вернуться позже?</summary>
+              <p>Написать ведущему, что прекращаете участие, и выйти из чата. Или что хотите присоединиться вновь — если будут места, welcome.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. РЕГИСТРАЦИЯ -->
+      <section class="section join-section" id="join" aria-labelledby="join-title">
+        <div class="wrap">
+          <div class="register">
+            <p class="eyebrow">Регистрация</p>
+            <h2 class="section-title" id="join-title">Как присоединиться</h2>
+            <p>Напишите в Telegram <b>@yoube_matters</b> и коротко расскажите о себе:</p>
+            <ol>
+              <li>Кратко о себе</li>
+              <li>Цели участия</li>
+            </ol>
+            <a class="btn-scream" href="https://t.me/yoube_matters" target="_blank" rel="noopener">
+              Написать в Telegram
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-wrap">
+        <p class="footer-word">долой уныние</p>
+        <nav class="footer-links" aria-label="Контакты и ссылки">
+          <a href="/">на главную</a>
+          <a href="https://t.me/yoube_project" target="_blank" rel="noopener">анонсы: t.me/yoube_project</a>
+          <a href="https://t.me/yoube_matters" target="_blank" rel="noopener">написать Илье</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      // Плавная прокрутка по якорям внутри страницы
+      document.querySelectorAll('a[data-nav][href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var id = a.getAttribute('href').slice(1);
+          var el = document.getElementById(id);
+          if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+      });
+
+      // Карусели
+      document.querySelectorAll('[data-carousel]').forEach(function (root) {
+        var track = root.querySelector('.carousel-track');
+        var slides = Array.prototype.slice.call(root.querySelectorAll('.carousel-slide'));
+        var dotsWrap = root.querySelector('.carousel-dots');
+        var index = 0;
+        var n = slides.length;
+
+        // точки
+        var dots = slides.map(function (_, i) {
+          var b = document.createElement('button');
+          b.className = 'carousel-dot';
+          b.type = 'button';
+          b.setAttribute('role', 'tab');
+          b.setAttribute('aria-label', 'Слайд ' + (i + 1));
+          b.addEventListener('click', function () { go(i); });
+          dotsWrap.appendChild(b);
+          return b;
+        });
+
+        function render() {
+          track.style.transform = 'translateX(' + (-index * 100) + '%)';
+          dots.forEach(function (d, i) { d.setAttribute('aria-current', i === index ? 'true' : 'false'); });
+        }
+        function go(i) { index = (i + n) % n; render(); }
+
+        root.querySelectorAll('.carousel-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () { go(index + parseInt(btn.dataset.dir, 10)); });
+        });
+
+        // свайп
+        var x0 = null;
+        root.querySelector('.carousel-viewport').addEventListener('pointerdown', function (e) { x0 = e.clientX; });
+        window.addEventListener('pointerup', function (e) {
+          if (x0 === null) return;
+          var dx = e.clientX - x0; x0 = null;
+          if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
+        });
+
+        // клавиатура
+        root.setAttribute('tabindex', '0');
+        root.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowLeft') { go(index - 1); }
+          else if (e.key === 'ArrowRight') { go(index + 1); }
+        });
+
+        render();
+      });
+    </script>
+  </body>
+</html>
